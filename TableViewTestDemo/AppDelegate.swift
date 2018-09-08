@@ -13,9 +13,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
+    var model =  FruitAdapter()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        let navController = window?.rootViewController as? UINavigationController
+        let demoController = navController?.topViewController as? DemoTableViewController
+        demoController?.dataSource = self.model
+        
         return true
     }
 
