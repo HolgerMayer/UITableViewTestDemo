@@ -13,9 +13,11 @@ class MockTableView: UITableView {
     var didRegisterNib = false
     var registeredIdentifier : String = ""
     
+    
     override func register(_ nib: UINib?, forCellReuseIdentifier identifier: String) {
         didRegisterNib = true
         registeredIdentifier = identifier
     }
 
+  
 }

@@ -64,4 +64,11 @@ class DemoTableViewControllerSetupWithDataSourceTests: XCTestCase {
         XCTAssertTrue((self.mockAdapter?.didCall_registerCells)!)
         
     }
+    
+    func testMemoryWarning() {
+        
+        UIControl().sendAction(Selector(("_performMemoryWarning")), to: UIApplication.shared, for: nil)
+        
+        
+    }
 }
