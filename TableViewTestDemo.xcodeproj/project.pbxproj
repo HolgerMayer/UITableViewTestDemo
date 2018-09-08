@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		54CCE50B2144755200268813 /* Fruit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CCE50A2144755200268813 /* Fruit.swift */; };
+		54CCE50E2144775F00268813 /* FruitTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CCE50C2144775F00268813 /* FruitTableViewCell.swift */; };
+		54CCE50F2144775F00268813 /* FruitTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54CCE50D2144775F00268813 /* FruitTableViewCell.xib */; };
+		54CCE51421447C4700268813 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CCE51321447C4700268813 /* Model.swift */; };
+		54CCE51621447EFA00268813 /* FruitTableViewCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CCE51521447EFA00268813 /* FruitTableViewCellTests.swift */; };
+		54CCE518214487DC00268813 /* FruitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CCE517214487DC00268813 /* FruitTests.swift */; };
+		54CCE51A214488B100268813 /* ModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CCE519214488B100268813 /* ModelTests.swift */; };
+		54CCE51C2144894200268813 /* FruitAdapterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CCE51B2144894200268813 /* FruitAdapterTests.swift */; };
+		54CCE51E21448AC900268813 /* MockTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CCE51D21448AC900268813 /* MockTableView.swift */; };
 		54DB1D152143F83100150C65 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54DB1D142143F83100150C65 /* AppDelegate.swift */; };
 		54DB1D1A2143F83100150C65 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 54DB1D182143F83100150C65 /* Main.storyboard */; };
 		54DB1D1C2143F83200150C65 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 54DB1D1B2143F83200150C65 /* Assets.xcassets */; };
@@ -39,6 +48,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		54CCE50A2144755200268813 /* Fruit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fruit.swift; sourceTree = "<group>"; };
+		54CCE50C2144775F00268813 /* FruitTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FruitTableViewCell.swift; sourceTree = "<group>"; };
+		54CCE50D2144775F00268813 /* FruitTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FruitTableViewCell.xib; sourceTree = "<group>"; };
+		54CCE51321447C4700268813 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		54CCE51521447EFA00268813 /* FruitTableViewCellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FruitTableViewCellTests.swift; sourceTree = "<group>"; };
+		54CCE517214487DC00268813 /* FruitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FruitTests.swift; sourceTree = "<group>"; };
+		54CCE519214488B100268813 /* ModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelTests.swift; sourceTree = "<group>"; };
+		54CCE51B2144894200268813 /* FruitAdapterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FruitAdapterTests.swift; sourceTree = "<group>"; };
+		54CCE51D21448AC900268813 /* MockTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockTableView.swift; sourceTree = "<group>"; };
 		54DB1D112143F83100150C65 /* TableViewTestDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TableViewTestDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		54DB1D142143F83100150C65 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		54DB1D192143F83100150C65 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -84,6 +102,40 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		54CCE5092144753D00268813 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				54CCE50A2144755200268813 /* Fruit.swift */,
+				54CCE51321447C4700268813 /* Model.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		54CCE51021447BFD00268813 /* TableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				54CCE51521447EFA00268813 /* FruitTableViewCellTests.swift */,
+			);
+			path = TableViewCells;
+			sourceTree = "<group>";
+		};
+		54CCE51121447C0900268813 /* Adapter */ = {
+			isa = PBXGroup;
+			children = (
+				54CCE51B2144894200268813 /* FruitAdapterTests.swift */,
+			);
+			path = Adapter;
+			sourceTree = "<group>";
+		};
+		54CCE51221447C1600268813 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				54CCE517214487DC00268813 /* FruitTests.swift */,
+				54CCE519214488B100268813 /* ModelTests.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		54DB1D082143F83100150C65 = {
 			isa = PBXGroup;
 			children = (
@@ -107,6 +159,7 @@
 		54DB1D132143F83100150C65 /* TableViewTestDemo */ = {
 			isa = PBXGroup;
 			children = (
+				54CCE5092144753D00268813 /* Model */,
 				54DB1D4A2143FB2C00150C65 /* Protocol */,
 				54DB1D492143FB1C00150C65 /* Adapter */,
 				54DB1D432143F84E00150C65 /* TableViewCells */,
@@ -124,6 +177,9 @@
 			isa = PBXGroup;
 			children = (
 				54DB1D4B2143FB9C00150C65 /* TestTools */,
+				54CCE51221447C1600268813 /* Model */,
+				54CCE51121447C0900268813 /* Adapter */,
+				54CCE51021447BFD00268813 /* TableViewCells */,
 				54DB1D462143F92700150C65 /* Controller */,
 				54DB1D2B2143F83200150C65 /* Info.plist */,
 			);
@@ -150,6 +206,8 @@
 		54DB1D432143F84E00150C65 /* TableViewCells */ = {
 			isa = PBXGroup;
 			children = (
+				54CCE50C2144775F00268813 /* FruitTableViewCell.swift */,
+				54CCE50D2144775F00268813 /* FruitTableViewCell.xib */,
 			);
 			path = TableViewCells;
 			sourceTree = "<group>";
@@ -184,6 +242,7 @@
 			isa = PBXGroup;
 			children = (
 				54DB1D542144036C00150C65 /* ObjectAdapterMock.swift */,
+				54CCE51D21448AC900268813 /* MockTableView.swift */,
 			);
 			path = TestTools;
 			sourceTree = "<group>";
@@ -292,6 +351,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				54CCE50F2144775F00268813 /* FruitTableViewCell.xib in Resources */,
 				54DB1D1F2143F83200150C65 /* LaunchScreen.storyboard in Resources */,
 				54DB1D1C2143F83200150C65 /* Assets.xcassets in Resources */,
 				54DB1D1A2143F83100150C65 /* Main.storyboard in Resources */,
@@ -319,9 +379,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				54CCE51421447C4700268813 /* Model.swift in Sources */,
+				54CCE50B2144755200268813 /* Fruit.swift in Sources */,
 				54DB1D4F2143FC2200150C65 /* FruitAdapter.swift in Sources */,
 				54DB1D4D2143FBFE00150C65 /* ObjectAdapterProtocol.swift in Sources */,
 				54DB1D152143F83100150C65 /* AppDelegate.swift in Sources */,
+				54CCE50E2144775F00268813 /* FruitTableViewCell.swift in Sources */,
 				54DB1D452143F86900150C65 /* DemoTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -330,9 +393,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				54CCE51C2144894200268813 /* FruitAdapterTests.swift in Sources */,
+				54CCE518214487DC00268813 /* FruitTests.swift in Sources */,
 				54DB1D552144036C00150C65 /* ObjectAdapterMock.swift in Sources */,
+				54CCE51621447EFA00268813 /* FruitTableViewCellTests.swift in Sources */,
+				54CCE51E21448AC900268813 /* MockTableView.swift in Sources */,
 				54DB1D482143F96400150C65 /* DemoTableViewControllerInitialSetupTests.swift in Sources */,
 				54DB1D532143FE9900150C65 /* DemoTableViewControllerTableViewDataSourceTests.swift in Sources */,
+				54CCE51A214488B100268813 /* ModelTests.swift in Sources */,
 				54DB1D512143FD9100150C65 /* DemoTableViewControllerSetupWithDataSourceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

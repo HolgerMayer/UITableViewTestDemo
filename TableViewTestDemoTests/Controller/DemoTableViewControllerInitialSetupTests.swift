@@ -12,7 +12,7 @@ import XCTest
 
 class DemoTableViewControllerInitialSetupTests: XCTestCase {
     
-    var testObject : DemoTableViewController?
+    var testObject : DemoTableViewController!
     
     override func setUp() {
         super.setUp()
@@ -55,7 +55,29 @@ class DemoTableViewControllerInitialSetupTests: XCTestCase {
     func testControllerDataSourceDoesNotExists(){
         XCTAssertNil(self.testObject?.dataSource)
     }
-
-   
     
+    func testNumberOfSections_NoDataSoure() {
+        
+        let sections = self.testObject.tableView.dataSource?.numberOfSections!(in: self.testObject.tableView)
+        
+        XCTAssertTrue(sections == 0)
+        
+    }
+    
+
+    func testNumberOfSections_NoDataSource() {
+        
+        let sections = self.testObject.tableView.dataSource?.numberOfSections!(in: self.testObject.tableView)
+        
+        XCTAssertTrue(sections == 0)
+        
+    }
+    
+    
+    func testNumberOfRowsInSection_NoDataSource()  {
+        
+        let rows = self.testObject.tableView(self.testObject.tableView, numberOfRowsInSection: 1)
+        
+        XCTAssertTrue(rows == 0)
+     }
 }

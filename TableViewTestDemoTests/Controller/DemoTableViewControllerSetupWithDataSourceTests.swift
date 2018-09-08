@@ -12,6 +12,7 @@ import XCTest
 class DemoTableViewControllerSetupWithDataSourceTests: XCTestCase {
     
     var testObject : DemoTableViewController?
+    var mockAdapter : ObjectAdapterMock?
     
     override func setUp() {
         super.setUp()
@@ -21,7 +22,9 @@ class DemoTableViewControllerSetupWithDataSourceTests: XCTestCase {
         let storyboard = UIStoryboard(name:"Main", bundle:bundle)
         self.testObject = storyboard.instantiateViewController(withIdentifier: "DemoTableViewControllerID") as? DemoTableViewController
         XCTAssertNotNil(self.testObject,"Testobject is nil")
-        self.testObject?.dataSource = FruitAdapter()
+        
+        self.mockAdapter = ObjectAdapterMock()
+        self.testObject?.dataSource = self.mockAdapter
         self.testObject?.loadViewIfNeeded()
     }
     
@@ -56,5 +59,9 @@ class DemoTableViewControllerSetupWithDataSourceTests: XCTestCase {
         XCTAssertNotNil(self.testObject?.dataSource)
     }
     
-    
+    func testRegisterCells() {
+        
+        XCTAssertTrue((self.mockAdapter?.didCall_registerCells)!)
+        
+    }
 }

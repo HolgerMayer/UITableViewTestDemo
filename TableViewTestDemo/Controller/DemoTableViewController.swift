@@ -24,6 +24,11 @@ class DemoTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        guard let dataSource = self.dataSource else {
+            return
+        }
+        
+        dataSource.registerCells(in: self.tableView)
      }
 
     override func didReceiveMemoryWarning() {
@@ -64,13 +69,19 @@ class DemoTableViewController: UITableViewController {
         let object = dataSource.objectFor(section: indexPath.section, row: indexPath.row)
         
         if object != nil {
-            let string = object as? String
-            if string != nil {
-                cell.textLabel?.text = string
-            } else {
-                cell.textLabel?.text = "Object is no string"
+            
+            guard let fruitCell = cell as? FruitTableViewCell else {
+                let string = object as? String
+                if string != nil {
+                    cell.textLabel?.text = string
+                } else {
+                    cell.textLabel?.text = "Object is no string"
+                }
+                return cell
             }
-
+            
+            fruitCell.content = object
+            
         } else {
             cell.textLabel?.text = "No object found"
         }

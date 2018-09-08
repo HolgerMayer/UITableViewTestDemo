@@ -6,10 +6,11 @@
 //  Copyright © 2018 holgermayer. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 
 protocol ObjectAdapterProtocol {
+    func registerCells(in tableView: UITableView)
     func numberOfSections() -> Int
     func numberOfRowsInSection(section:Int) -> Int
     func cellIDFor(section:Int, row:Int) -> String

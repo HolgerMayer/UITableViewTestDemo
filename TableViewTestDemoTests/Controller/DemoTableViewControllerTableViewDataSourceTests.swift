@@ -20,13 +20,14 @@ class DemoTableViewControllerTableViewDataSourceTests: XCTestCase {
         let storyboard = UIStoryboard(name:"Main", bundle:bundle)
         self.testObject = storyboard.instantiateViewController(withIdentifier: "DemoTableViewControllerID") as? DemoTableViewController
         XCTAssertNotNil(self.testObject,"Testobject is nil")
-        self.testObject.loadViewIfNeeded()
-    }
+     }
     
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
+    
+   
     
     func testNumberOfSections_NoSections() {
         
@@ -34,7 +35,8 @@ class DemoTableViewControllerTableViewDataSourceTests: XCTestCase {
         let mockAdapter = ObjectAdapterMock()
         mockAdapter.valueForNumberOfSections = 0
         self.testObject.dataSource = mockAdapter
-        
+        self.testObject.loadViewIfNeeded()
+
         // Run
         let sections = self.testObject.tableView.dataSource?.numberOfSections!(in: self.testObject.tableView)
         
@@ -50,7 +52,8 @@ class DemoTableViewControllerTableViewDataSourceTests: XCTestCase {
         let mockAdapter = ObjectAdapterMock()
         mockAdapter.valueForNumberOfSections = 1
         self.testObject?.dataSource = mockAdapter
-        
+        self.testObject.loadViewIfNeeded()
+
         // Run
         let sections = self.testObject.tableView.dataSource?.numberOfSections!(in: self.testObject.tableView)
         
@@ -65,7 +68,8 @@ class DemoTableViewControllerTableViewDataSourceTests: XCTestCase {
         let mockAdapter = ObjectAdapterMock()
         mockAdapter.valueForNumberOfSections = 4
         self.testObject?.dataSource = mockAdapter
-        
+        self.testObject.loadViewIfNeeded()
+
         // Run
         let sections = self.testObject.tableView.dataSource?.numberOfSections!(in: self.testObject.tableView)
         
@@ -80,7 +84,8 @@ class DemoTableViewControllerTableViewDataSourceTests: XCTestCase {
         let mockAdapter = ObjectAdapterMock()
         mockAdapter.valueForNumberOfRowsInSection = 0
         self.testObject?.dataSource = mockAdapter
-        
+        self.testObject.loadViewIfNeeded()
+
         // Run
         let rows = self.testObject.tableView(self.testObject.tableView, numberOfRowsInSection: 1)
         
@@ -95,7 +100,8 @@ class DemoTableViewControllerTableViewDataSourceTests: XCTestCase {
         let mockAdapter = ObjectAdapterMock()
         mockAdapter.valueForNumberOfRowsInSection = 1
         self.testObject?.dataSource = mockAdapter
-        
+        self.testObject.loadViewIfNeeded()
+
         // Run
         let rows = self.testObject.tableView(self.testObject.tableView, numberOfRowsInSection: 1)
         
@@ -110,7 +116,8 @@ class DemoTableViewControllerTableViewDataSourceTests: XCTestCase {
         let mockAdapter = ObjectAdapterMock()
         mockAdapter.valueForNumberOfRowsInSection = 1
         self.testObject?.dataSource = mockAdapter
-        
+        self.testObject.loadViewIfNeeded()
+
         // Run
         let rows = self.testObject.tableView(self.testObject.tableView, numberOfRowsInSection: 1)
         
@@ -122,7 +129,8 @@ class DemoTableViewControllerTableViewDataSourceTests: XCTestCase {
     func testCellForSectionAndRowNoDataSourceAdapter() {
         
         // Setup
-        
+        self.testObject.loadViewIfNeeded()
+
         // Run
         let cell = self.testObject.tableView(self.testObject.tableView, cellForRowAt: IndexPath(row: 1, section: 1))
         
@@ -138,6 +146,7 @@ class DemoTableViewControllerTableViewDataSourceTests: XCTestCase {
         mockAdapter.valueForCellID = "BasicCellID"
         mockAdapter.objectForSectionRow = "Dies ist ein Hugo"
         self.testObject?.dataSource = mockAdapter
+        self.testObject.loadViewIfNeeded()
 
         // Run
         let cell = self.testObject.tableView(self.testObject.tableView, cellForRowAt: IndexPath(row: 1, section: 1))
@@ -153,8 +162,9 @@ class DemoTableViewControllerTableViewDataSourceTests: XCTestCase {
         // Setup
         let mockAdapter = ObjectAdapterMock()
         mockAdapter.valueForCellID = "BasicCellID"
-         self.testObject?.dataSource = mockAdapter
-        
+        self.testObject?.dataSource = mockAdapter
+        self.testObject.loadViewIfNeeded()
+
         // Run
         let cell = self.testObject.tableView(self.testObject.tableView, cellForRowAt: IndexPath(row: 1, section: 1))
         
@@ -164,6 +174,26 @@ class DemoTableViewControllerTableViewDataSourceTests: XCTestCase {
         XCTAssertTrue(cell.textLabel?.text ==  "Object is no string")
     }
     
+    func testCellForSectionAndRow_FruitType() {
+        
+        // Setup
+        let mockAdapter = ObjectAdapterMock()
+        mockAdapter.valueForCellID = "FruitTableViewCellID"
+        mockAdapter.objectForSectionRow = Fruit(name: "Strawberry", category: .berry, price: 22.0)
+        self.testObject?.dataSource = mockAdapter
+        self.testObject.loadViewIfNeeded()
+
+        // Run
+        let cell = self.testObject.tableView(self.testObject.tableView, cellForRowAt: IndexPath(row: 1, section: 1))
+        
+        // Verify
+        XCTAssertTrue(mockAdapter.didCall_cellIDFor)
+        XCTAssertTrue(mockAdapter.didCall_objectFor)
+        XCTAssertTrue(cell.textLabel?.text ==  "Strawberry")
+        XCTAssertTrue(cell.detailTextLabel?.text ==  "\(22.0)")
+    }
+    
+    
     func testCellForSectionAndRow_NoObject() {
         
         // Setup
@@ -171,6 +201,7 @@ class DemoTableViewControllerTableViewDataSourceTests: XCTestCase {
         mockAdapter.valueForCellID = "BasicCellID"
         mockAdapter.objectForSectionRow = nil
         self.testObject?.dataSource = mockAdapter
+        self.testObject.loadViewIfNeeded()
 
         // Run
         let cell = self.testObject.tableView(self.testObject.tableView, cellForRowAt: IndexPath(row: 1, section: 1))
