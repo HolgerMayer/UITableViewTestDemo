@@ -89,6 +89,50 @@ class DemoTableViewController: UITableViewController {
          return cell
     }
 
-   
 
+    override public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        guard let dataSource = self.dataSource else {
+            print("Warning : DemoTableViewController datasource not set")
+            return nil
+        }
+        
+        let title =  dataSource.sectionTitleFor(section: section)
+        
+        // Dequeue with the reuse identifier
+        let headerID = dataSource.sectionHeaderIDFor(section: section)
+        
+        let header = self.tableView.dequeueReusableHeaderFooterView(withIdentifier: headerID) as? GroupHeaderView
+        header?.delegate = self
+        header?.section = section
+        header?.headerLabel?.text = title
+        header?.accessibilityIdentifier = title
+        return header
+    }
+    
+    
+    override public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 40.0
+    }
+    
+    override public func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 0.0
+    }
+    
+}
+
+extension DemoTableViewController : GroupHeaderViewDelegate {
+    func didHitAddAction(_ headerView: GroupHeaderView) {
+        let section = headerView.section
+        
+        guard let dataSource = self.dataSource else {
+            print("Warning : DemoTableViewController datasource not set")
+            return
+        }
+
+        let indexPath = dataSource.addObjectTo(section:section)
+        self.tableView.insertRows(at: [indexPath], with: .right)
+        
+    }
+    
+    
 }

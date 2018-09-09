@@ -88,4 +88,66 @@ class FruitAdapterTests: XCTestCase {
         XCTAssertNil(sectionObjectNil)
     }
     
+    func testGroupHeaderViewID(){
+        XCTAssertTrue(testObject.sectionHeaderIDFor(section: 0) == "GroupHeaderViewID")
+    }
+    
+    func testGroupHeaderViewIDSectionOutOfBounds(){
+        XCTAssertTrue(testObject.sectionHeaderIDFor(section: 55) == "GroupHeaderViewID")
+    }
+    
+    func testGroupHeaderTitle(){
+        XCTAssertTrue(testObject.sectionTitleFor(section:0)  == "Berries")
+        XCTAssertTrue(testObject.sectionTitleFor(section:1)  == "Apples")
+        XCTAssertTrue(testObject.sectionTitleFor(section:2)  == "Cherries")
+        XCTAssertTrue(testObject.sectionTitleFor(section:55)  == "Undefined")
+   }
+    
+    func testAddObjectForSection0(){
+        let totalCount = self.testObject.model.data.count
+        let berryCount = (self.testObject.model.berrys()?.count)!
+        
+        let _ = self.testObject.addObjectTo(section: 0)
+ 
+        XCTAssertTrue(totalCount + 1 == self.testObject.model.data.count)
+        XCTAssertTrue(berryCount + 1 == (self.testObject.model.berrys()?.count)!)
+    }
+    
+    func testAddObjectForSection1(){
+        let totalCount = self.testObject.model.data.count
+        let appleCount = (self.testObject.model.apples()?.count)!
+        
+        let _ = self.testObject.addObjectTo(section: 1)
+        
+        XCTAssertTrue(totalCount + 1 == self.testObject.model.data.count)
+        XCTAssertTrue(appleCount + 1 == (self.testObject.model.apples()?.count)!)
+    }
+    
+    func testAddObjectForSection2(){
+        let totalCount = self.testObject.model.data.count
+        let cherryCount = (self.testObject.model.cherries()?.count)!
+        
+        let index = self.testObject.addObjectTo(section: 2)
+        
+        XCTAssertTrue(totalCount + 1 == self.testObject.model.data.count)
+        XCTAssertTrue(cherryCount + 1 == (self.testObject.model.cherries()?.count)!)
+        
+        let fruit = self.testObject.objectFor(section: index.section, row: index.row)
+        guard let cherry = fruit as? Fruit else {
+            XCTAssertTrue(false,"Object is  not a fruit")
+            return
+        }
+        XCTAssertTrue(cherry.category == .cherry)
+        XCTAssertTrue(cherry.name == "Noname")
+    }
+    
+    func testAddObjectForInvalidSection(){
+        let totalCount = self.testObject.model.data.count
+        
+        let _ = self.testObject.addObjectTo(section: 55)
+        
+        XCTAssertTrue(totalCount == self.testObject.model.data.count)
+ 
+    }
+    
 }

@@ -80,4 +80,11 @@ class DemoTableViewControllerInitialSetupTests: XCTestCase {
         
         XCTAssertTrue(rows == 0)
      }
+    
+    func testViewForHeader_NoDataSource() {
+        
+        let view = self.testObject.tableView(self.testObject.tableView, viewForHeaderInSection: 0)
+        
+        XCTAssertNil(view)
+    }
 }

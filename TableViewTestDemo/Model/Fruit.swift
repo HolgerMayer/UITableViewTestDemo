@@ -14,7 +14,7 @@ enum FruitCategory {
     case cherry
 }
 
-class Fruit {
+class Fruit : NSObject {
     var name : String
     var price : Float
     var category : FruitCategory

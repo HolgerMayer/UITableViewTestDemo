@@ -20,7 +20,6 @@
 		54DB1D1A2143F83100150C65 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 54DB1D182143F83100150C65 /* Main.storyboard */; };
 		54DB1D1C2143F83200150C65 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 54DB1D1B2143F83200150C65 /* Assets.xcassets */; };
 		54DB1D1F2143F83200150C65 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 54DB1D1D2143F83200150C65 /* LaunchScreen.storyboard */; };
-		54DB1D352143F83200150C65 /* TableViewTestDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54DB1D342143F83200150C65 /* TableViewTestDemoUITests.swift */; };
 		54DB1D452143F86900150C65 /* DemoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54DB1D442143F86900150C65 /* DemoTableViewController.swift */; };
 		54DB1D482143F96400150C65 /* DemoTableViewControllerInitialSetupTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54DB1D472143F96400150C65 /* DemoTableViewControllerInitialSetupTests.swift */; };
 		54DB1D4D2143FBFE00150C65 /* ObjectAdapterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54DB1D4C2143FBFE00150C65 /* ObjectAdapterProtocol.swift */; };
@@ -28,6 +27,9 @@
 		54DB1D512143FD9100150C65 /* DemoTableViewControllerSetupWithDataSourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54DB1D502143FD9100150C65 /* DemoTableViewControllerSetupWithDataSourceTests.swift */; };
 		54DB1D532143FE9900150C65 /* DemoTableViewControllerTableViewDataSourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54DB1D522143FE9900150C65 /* DemoTableViewControllerTableViewDataSourceTests.swift */; };
 		54DB1D552144036C00150C65 /* ObjectAdapterMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54DB1D542144036C00150C65 /* ObjectAdapterMock.swift */; };
+		54F477D321454C820002E278 /* GroupHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F477D121454C820002E278 /* GroupHeaderView.swift */; };
+		54F477D421454C820002E278 /* GroupHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54F477D221454C820002E278 /* GroupHeaderView.xib */; };
+		54F477D721454CEA0002E278 /* GroupHeaderViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F477D621454CEA0002E278 /* GroupHeaderViewTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +77,9 @@
 		54DB1D502143FD9100150C65 /* DemoTableViewControllerSetupWithDataSourceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoTableViewControllerSetupWithDataSourceTests.swift; sourceTree = "<group>"; };
 		54DB1D522143FE9900150C65 /* DemoTableViewControllerTableViewDataSourceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoTableViewControllerTableViewDataSourceTests.swift; sourceTree = "<group>"; };
 		54DB1D542144036C00150C65 /* ObjectAdapterMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectAdapterMock.swift; sourceTree = "<group>"; };
+		54F477D121454C820002E278 /* GroupHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupHeaderView.swift; sourceTree = "<group>"; };
+		54F477D221454C820002E278 /* GroupHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GroupHeaderView.xib; sourceTree = "<group>"; };
+		54F477D621454CEA0002E278 /* GroupHeaderViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupHeaderViewTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,6 +168,7 @@
 				54DB1D4A2143FB2C00150C65 /* Protocol */,
 				54DB1D492143FB1C00150C65 /* Adapter */,
 				54DB1D432143F84E00150C65 /* TableViewCells */,
+				54F477D021454C670002E278 /* TableHeaderFooterViews */,
 				54DB1D422143F84900150C65 /* Controller */,
 				54DB1D142143F83100150C65 /* AppDelegate.swift */,
 				54DB1D182143F83100150C65 /* Main.storyboard */,
@@ -180,6 +186,7 @@
 				54CCE51221447C1600268813 /* Model */,
 				54CCE51121447C0900268813 /* Adapter */,
 				54CCE51021447BFD00268813 /* TableViewCells */,
+				54F477D521454CC80002E278 /* TableHeaderFooterViews */,
 				54DB1D462143F92700150C65 /* Controller */,
 				54DB1D2B2143F83200150C65 /* Info.plist */,
 			);
@@ -245,6 +252,23 @@
 				54CCE51D21448AC900268813 /* MockTableView.swift */,
 			);
 			path = TestTools;
+			sourceTree = "<group>";
+		};
+		54F477D021454C670002E278 /* TableHeaderFooterViews */ = {
+			isa = PBXGroup;
+			children = (
+				54F477D121454C820002E278 /* GroupHeaderView.swift */,
+				54F477D221454C820002E278 /* GroupHeaderView.xib */,
+			);
+			path = TableHeaderFooterViews;
+			sourceTree = "<group>";
+		};
+		54F477D521454CC80002E278 /* TableHeaderFooterViews */ = {
+			isa = PBXGroup;
+			children = (
+				54F477D621454CEA0002E278 /* GroupHeaderViewTests.swift */,
+			);
+			path = TableHeaderFooterViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -355,6 +379,7 @@
 				54DB1D1F2143F83200150C65 /* LaunchScreen.storyboard in Resources */,
 				54DB1D1C2143F83200150C65 /* Assets.xcassets in Resources */,
 				54DB1D1A2143F83100150C65 /* Main.storyboard in Resources */,
+				54F477D421454C820002E278 /* GroupHeaderView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -382,6 +407,7 @@
 				54CCE51421447C4700268813 /* Model.swift in Sources */,
 				54CCE50B2144755200268813 /* Fruit.swift in Sources */,
 				54DB1D4F2143FC2200150C65 /* FruitAdapter.swift in Sources */,
+				54F477D321454C820002E278 /* GroupHeaderView.swift in Sources */,
 				54DB1D4D2143FBFE00150C65 /* ObjectAdapterProtocol.swift in Sources */,
 				54DB1D152143F83100150C65 /* AppDelegate.swift in Sources */,
 				54CCE50E2144775F00268813 /* FruitTableViewCell.swift in Sources */,
@@ -400,6 +426,7 @@
 				54CCE51E21448AC900268813 /* MockTableView.swift in Sources */,
 				54DB1D482143F96400150C65 /* DemoTableViewControllerInitialSetupTests.swift in Sources */,
 				54DB1D532143FE9900150C65 /* DemoTableViewControllerTableViewDataSourceTests.swift in Sources */,
+				54F477D721454CEA0002E278 /* GroupHeaderViewTests.swift in Sources */,
 				54CCE51A214488B100268813 /* ModelTests.swift in Sources */,
 				54DB1D512143FD9100150C65 /* DemoTableViewControllerSetupWithDataSourceTests.swift in Sources */,
 			);
@@ -409,7 +436,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				54DB1D352143F83200150C65 /* TableViewTestDemoUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

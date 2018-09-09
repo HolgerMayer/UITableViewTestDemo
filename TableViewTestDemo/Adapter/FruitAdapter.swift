@@ -18,6 +18,9 @@ class FruitAdapter : ObjectAdapterProtocol {
     func registerCells(in tableView: UITableView) {
         let bundle = Bundle(for:FruitAdapter.self)
         tableView.register(UINib(nibName: "FruitTableViewCell", bundle: bundle), forCellReuseIdentifier: "FruitTableViewCellID")
+        let nib = UINib(nibName:"GroupHeaderView", bundle: bundle)
+        tableView.register(nib, forHeaderFooterViewReuseIdentifier: "GroupHeaderViewID")
+
     }
 
     
@@ -67,4 +70,49 @@ class FruitAdapter : ObjectAdapterProtocol {
         }
     }
     
+    func sectionHeaderIDFor(section: Int) -> String {
+        return "GroupHeaderViewID"
+    }
+    
+    func sectionTitleFor(section:Int) -> String {
+        switch section {
+        case 0 :
+            return "Berries"
+        case 1 :
+            return "Apples"
+        case 2 :
+            return "Cherries"
+        default :
+            return "Undefined"
+        }
+    }
+
+    func addObjectTo(section:Int) -> IndexPath {
+        let fruit = Fruit(name:"Noname")
+        var row = 0
+        switch section {
+        case 0 :
+            fruit.category = .berry
+            self.model.data.append(fruit)
+            let berries = self.model.berrys()
+            row = berries!.index(of:fruit)!
+            break
+        case 1:
+            fruit.category = .apple
+            self.model.data.append(fruit)
+             let apples = self.model.apples()
+            row = apples!.index(of:fruit)!
+           break
+        case 2:
+            fruit.category = .cherry
+            self.model.data.append(fruit)
+            let cherries = self.model.cherries()
+            row = cherries!.index(of:fruit)!
+            break
+        default:
+            break
+        }
+        return IndexPath(row: row, section: section)
+    }
+
 }

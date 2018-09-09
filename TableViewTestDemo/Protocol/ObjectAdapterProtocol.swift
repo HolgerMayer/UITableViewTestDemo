@@ -15,4 +15,7 @@ protocol ObjectAdapterProtocol {
     func numberOfRowsInSection(section:Int) -> Int
     func cellIDFor(section:Int, row:Int) -> String
     func objectFor(section:Int, row:Int) -> Any?
+    func sectionHeaderIDFor(section: Int) -> String
+    func sectionTitleFor(section:Int) -> String
+    func addObjectTo(section:Int) -> IndexPath
 }

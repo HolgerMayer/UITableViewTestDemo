@@ -211,4 +211,58 @@ class DemoTableViewControllerTableViewDataSourceTests: XCTestCase {
         XCTAssertTrue(mockAdapter.didCall_objectFor)
         XCTAssertTrue(cell.textLabel?.text ==  "No object found")
     }
+    
+    func testHeaderViewHeight(){
+        
+        let height = self.testObject.tableView(self.testObject.tableView, heightForHeaderInSection: 0)
+        
+        XCTAssertTrue(height == 40.0)
+    }
+    
+    func testFooterViewHeight(){
+        
+        let height = self.testObject.tableView(self.testObject.tableView, heightForFooterInSection: 0)
+        
+        XCTAssertTrue(height == 0.0)
+    }
+    
+    
+    func testHeaderViewCreation(){
+        let mockAdapter = ObjectAdapterMock()
+        mockAdapter.valueForHeaderTitle = "Hugo 123"
+        self.testObject.dataSource = mockAdapter
+        self.testObject.loadViewIfNeeded()
+        
+        let view = self.testObject.tableView(self.testObject.tableView, viewForHeaderInSection: 2)
+        XCTAssertNotNil(view)
+        guard let groupHeaderView = view as? GroupHeaderView else {
+            XCTAssertTrue(false,"headerView is not of class GourpheaderView")
+            return
+        }
+        
+        XCTAssertNotNil(groupHeaderView.delegate)
+        XCTAssertTrue(groupHeaderView.section == 2)
+        XCTAssertTrue(groupHeaderView.headerLabel.text == "Hugo 123")
+        
+    }
+
+    func testController_didHitAddAction(){
+        let adapter = FruitAdapter()
+        self.testObject.dataSource = adapter
+        self.testObject.loadViewIfNeeded()
+        
+        let totalCount = adapter.model.data.count
+        let berryCount = (adapter.model.berrys()?.count)!
+
+        let groupHeader = self.testObject.tableView(self.testObject.tableView, viewForHeaderInSection: 0) as! GroupHeaderView
+        XCTAssertNotNil(groupHeader)
+        
+        self.testObject.didHitAddAction(groupHeader)
+        
+        XCTAssertTrue(totalCount + 1 == adapter.model.data.count)
+        XCTAssertTrue(berryCount + 1 == adapter.model.berrys()?.count)
+
+    }
+    
+   
 }

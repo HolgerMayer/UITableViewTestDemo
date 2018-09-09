@@ -11,8 +11,8 @@ import XCTest
 
 class DemoTableViewControllerSetupWithDataSourceTests: XCTestCase {
     
-    var testObject : DemoTableViewController?
-    var mockAdapter : ObjectAdapterMock?
+    var testObject : DemoTableViewController!
+    var mockAdapter : ObjectAdapterMock!
     
     override func setUp() {
         super.setUp()
@@ -64,11 +64,11 @@ class DemoTableViewControllerSetupWithDataSourceTests: XCTestCase {
         XCTAssertTrue((self.mockAdapter?.didCall_registerCells)!)
         
     }
+ 
+   
     
     func testMemoryWarning() {
         
         UIControl().sendAction(Selector(("_performMemoryWarning")), to: UIApplication.shared, for: nil)
-        
-        
-    }
+     }
 }
