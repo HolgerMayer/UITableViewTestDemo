@@ -29,7 +29,9 @@ class DemoTableViewController: UITableViewController {
         }
         
         dataSource.registerCells(in: self.tableView)
-     }
+     
+        navigationItem.rightBarButtonItem = editButtonItem
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -118,16 +120,34 @@ class DemoTableViewController: UITableViewController {
         return 0.0
     }
     
+    
+    override public func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        guard let dataSource = self.dataSource else {
+            print("Warning : DemoTableViewController datasource not set")
+            return
+        }
+        
+        if editingStyle == .delete {
+            dataSource.deleteObjectFor(section:indexPath.section , row:indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        }
+        /*
+        else if editingStyle == .insert {
+            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
+        }
+         */
+    }
 }
 
 extension DemoTableViewController : GroupHeaderViewDelegate {
     func didHitAddAction(_ headerView: GroupHeaderView) {
-        let section = headerView.section
         
         guard let dataSource = self.dataSource else {
             print("Warning : DemoTableViewController datasource not set")
             return
         }
+
+        let section = headerView.section
 
         let indexPath = dataSource.addObjectTo(section:section)
         self.tableView.insertRows(at: [indexPath], with: .right)

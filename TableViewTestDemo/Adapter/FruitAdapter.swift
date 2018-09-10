@@ -10,6 +10,7 @@ import UIKit
 
 class FruitAdapter : ObjectAdapterProtocol {
     
+    
     var model = Model()
     
     init(){
@@ -113,6 +114,19 @@ class FruitAdapter : ObjectAdapterProtocol {
             break
         }
         return IndexPath(row: row, section: section)
+    }
+
+    func deleteObjectFor(section: Int, row: Int) {
+        let object = objectFor(section: section, row: row)
+        
+        let fruit = object as? Fruit
+        
+        if fruit != nil {
+            let objectIndex = model.data.index(of: fruit!)
+            if objectIndex != nil {
+                 model.data.remove(at:objectIndex!)
+           }
+        }
     }
 
 }

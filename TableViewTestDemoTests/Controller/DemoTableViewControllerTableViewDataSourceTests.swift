@@ -264,5 +264,24 @@ class DemoTableViewControllerTableViewDataSourceTests: XCTestCase {
 
     }
     
+    func testCommitEditingDelete(){
+        let mockAdapter = ObjectAdapterMock()
+        self.testObject.dataSource = mockAdapter
+        
+        let mockTableView = MockTableView()
+        
+        self.testObject.tableView(mockTableView, commit: .delete, forRowAt: IndexPath(row: 3, section: 2))
+
+        XCTAssertTrue(mockTableView.didCall_deleteRows_at)
+        XCTAssertNotNil(mockTableView.parameterIndexPaths)
+        XCTAssertTrue(mockTableView.parameterIndexPaths?.count == 1)
+        let indexPath = mockTableView.parameterIndexPaths![0]
+        XCTAssertTrue(indexPath.row == 3)
+        XCTAssertTrue(indexPath.section == 2)
+        XCTAssertTrue(mockAdapter.didCall_deleteObjectFor)
+        XCTAssertTrue(mockAdapter.parameterSection == 2)
+        XCTAssertTrue(mockAdapter.parameterRow == 3)
+        
+    }
    
 }

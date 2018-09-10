@@ -9,7 +9,9 @@
 import XCTest
 
 class TableViewTestDemoUITests: XCTestCase {
-        
+    
+    var app : XCUIApplication!
+    
     override func setUp() {
         super.setUp()
         
@@ -21,6 +23,8 @@ class TableViewTestDemoUITests: XCTestCase {
         XCUIApplication().launch()
 
         // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
+        
+        app = XCUIApplication()
     }
     
     override func tearDown() {
@@ -28,9 +32,30 @@ class TableViewTestDemoUITests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+  
+    
+    func addBerry(){
+        let tablesQuery = app.tables
+        tablesQuery.otherElements["Berries"].children(matching: .button).element.tap()
+        
+    }
+    
+    func addApple(){
+        let tablesQuery = app.tables
+        tablesQuery.otherElements["Apples"].children(matching: .button).element.tap()
+        
+    }
+    
+    func addCherry(){
+        let tablesQuery = app.tables
+        tablesQuery.otherElements["Cherries"].children(matching: .button).element.tap()
+        
+    }
+    
+    func testExample()  {
+        addBerry()
+        addApple()
+        addCherry()
     }
     
 }

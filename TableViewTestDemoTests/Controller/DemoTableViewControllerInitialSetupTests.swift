@@ -87,4 +87,30 @@ class DemoTableViewControllerInitialSetupTests: XCTestCase {
         
         XCTAssertNil(view)
     }
+    
+    func testdidHitAddAction_NoDataSource(){
+        
+        self.testObject.dataSource = nil
+        let mockTableView = MockTableView()
+        let headerView = GroupHeaderView()
+        
+        self.testObject.didHitAddAction(headerView)
+        
+        XCTAssertFalse(mockTableView.didCall_insertRows_at)
+    }
+    
+    func testEditButton_NoDataSource() {
+         XCTAssertNil(self.testObject.navigationItem.rightBarButtonItem)
+    }
+    
+    func testCommitEditingDelete_NoDataSource(){
+
+        self.testObject.dataSource = nil
+        let mockTableView = MockTableView()
+        
+        self.testObject.tableView(mockTableView, commit: .delete, forRowAt: IndexPath(row: 3, section: 2))
+        
+        XCTAssertFalse(mockTableView.didCall_deleteRows_at)
+
+    }
 }

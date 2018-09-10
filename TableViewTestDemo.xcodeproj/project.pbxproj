@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5464FEFD2145ABBA00C406E8 /* TableViewTestDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54DB1D342143F83200150C65 /* TableViewTestDemoUITests.swift */; };
 		54CCE50B2144755200268813 /* Fruit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CCE50A2144755200268813 /* Fruit.swift */; };
 		54CCE50E2144775F00268813 /* FruitTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CCE50C2144775F00268813 /* FruitTableViewCell.swift */; };
 		54CCE50F2144775F00268813 /* FruitTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54CCE50D2144775F00268813 /* FruitTableViewCell.xib */; };
@@ -436,6 +437,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5464FEFD2145ABBA00C406E8 /* TableViewTestDemoUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

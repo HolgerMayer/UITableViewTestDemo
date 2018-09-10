@@ -18,4 +18,5 @@ protocol ObjectAdapterProtocol {
     func sectionHeaderIDFor(section: Int) -> String
     func sectionTitleFor(section:Int) -> String
     func addObjectTo(section:Int) -> IndexPath
+    func deleteObjectFor(section:Int, row:Int)
 }

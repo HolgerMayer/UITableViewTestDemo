@@ -10,14 +10,25 @@ import UIKit
 
 class MockTableView: UITableView {
 
-    var didRegisterNib = false
-    var registeredIdentifier : String = ""
+    var didCall_registerNib = false
+    var didCall_deleteRows_at = false
+    var didCall_insertRows_at = false
     
+    var registeredIdentifier : String = ""
+    var parameterIndexPaths : [IndexPath]?
     
     override func register(_ nib: UINib?, forCellReuseIdentifier identifier: String) {
-        didRegisterNib = true
+        didCall_registerNib = true
         registeredIdentifier = identifier
     }
 
+    override func deleteRows(at indexPaths: [IndexPath], with animation: UITableViewRowAnimation) {
+        didCall_deleteRows_at = true
+        parameterIndexPaths = indexPaths
+    }
   
+    override func insertRows(at indexPaths: [IndexPath], with animation: UITableViewRowAnimation) {
+        didCall_insertRows_at = true
+        parameterIndexPaths = indexPaths
+    }
 }

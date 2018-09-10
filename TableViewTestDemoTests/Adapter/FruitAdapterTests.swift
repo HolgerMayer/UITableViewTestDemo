@@ -29,7 +29,7 @@ class FruitAdapterTests: XCTestCase {
         
         self.testObject.registerCells(in: tableView)
         
-        XCTAssertTrue(tableView.didRegisterNib)
+        XCTAssertTrue(tableView.didCall_registerNib)
         XCTAssertTrue(tableView.registeredIdentifier == "FruitTableViewCellID")
     }
 
@@ -150,4 +150,17 @@ class FruitAdapterTests: XCTestCase {
  
     }
     
+    func testDeleteObjectValidIndexPath(){
+        XCTAssertTrue((self.testObject.model.apples()?.count)! == 1)
+        self.testObject.deleteObjectFor(section: 1, row: 0)
+        XCTAssertTrue((self.testObject.model.apples()?.count)! == 0)
+
+    }
+    
+    func testDeleteObjectInValidIndexPath(){
+        let totalCount = self.testObject.model.data.count
+        self.testObject.deleteObjectFor(section: 55, row: 0)
+        XCTAssertTrue(self.testObject.model.data.count == totalCount)
+
+    }
 }

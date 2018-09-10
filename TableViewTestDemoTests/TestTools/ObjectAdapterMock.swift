@@ -13,6 +13,7 @@ class ObjectAdapterMock : ObjectAdapterProtocol {
     
     
     
+    
     var didCall_registerCells = false
     var didCall_numberOfSections  = false
     var didCall_numberOfRowsInSection  = false
@@ -21,6 +22,7 @@ class ObjectAdapterMock : ObjectAdapterProtocol {
     var didCall_sectionHeaderIDFor = false
     var didCall_sectionTitleFor = false
     var didCall_addObjectTo = false
+    var didCall_deleteObjectFor = false
     
     var valueForNumberOfSections : Int = 0
     var valueForNumberOfRowsInSection : Int = 0
@@ -28,6 +30,8 @@ class ObjectAdapterMock : ObjectAdapterProtocol {
     var objectForSectionRow : Any? = Date()
     var valueForHeaderTitle = "Header Title"
     var valueForInsertIndexPath = IndexPath(row: 0, section: 0)
+    var parameterSection = -1
+    var parameterRow = -1
     
     func registerCells(in tableView: UITableView) {
         didCall_registerCells = true
@@ -75,4 +79,11 @@ class ObjectAdapterMock : ObjectAdapterProtocol {
         didCall_addObjectTo = true
         return valueForInsertIndexPath
     }
+    
+    func deleteObjectFor(section: Int, row: Int) {
+        didCall_deleteObjectFor = true
+        parameterSection = section
+        parameterRow = row
+    }
+
 }
