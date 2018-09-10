@@ -31,4 +31,26 @@ class Model {
     func cherries() -> [Fruit]? {
         return data.filter{ $0.category == .cherry }
     }
+    
+    
+    func generateDefaultNameFor(category : FruitCategory) -> String {
+        let templateString = category.rawValue
+        
+        let existingFruits = data.filter{ $0.category == category && $0.name.hasPrefix(templateString) }
+        
+        if existingFruits.count == 0 {
+            return templateString + " 0"
+        }
+        
+        for index in 0..<existingFruits.count {
+            let checkName = templateString + " \(index)"
+            if !existingFruits.contains(where:{$0.name == checkName }){
+                return checkName
+            }
+        }
+        
+        
+        return templateString + " \(existingFruits.count)"
+    }
+    
 }

@@ -8,10 +8,10 @@
 
 import Foundation
 
-enum FruitCategory {
-    case berry
-    case apple
-    case cherry
+enum FruitCategory : String {
+    case berry = "Berry"
+    case apple = "Apple"
+    case cherry = "Cherry"
 }
 
 class Fruit : NSObject {

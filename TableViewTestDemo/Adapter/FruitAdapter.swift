@@ -89,22 +89,24 @@ class FruitAdapter : ObjectAdapterProtocol {
     }
 
     func addObjectTo(section:Int) -> IndexPath {
-        let fruit = Fruit(name:"Noname")
-        var row = 0
+         var row = 0
         switch section {
         case 0 :
+            let fruit = Fruit(name:model.generateDefaultNameFor(category: .berry))
             fruit.category = .berry
             self.model.data.append(fruit)
             let berries = self.model.berrys()
             row = berries!.index(of:fruit)!
             break
         case 1:
+            let fruit = Fruit(name:model.generateDefaultNameFor(category: .apple))
             fruit.category = .apple
             self.model.data.append(fruit)
              let apples = self.model.apples()
             row = apples!.index(of:fruit)!
            break
         case 2:
+            let fruit = Fruit(name:model.generateDefaultNameFor(category: .cherry))
             fruit.category = .cherry
             self.model.data.append(fruit)
             let cherries = self.model.cherries()

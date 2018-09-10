@@ -34,6 +34,42 @@ class ModelTests: XCTestCase {
         XCTAssertTrue(testObject.cherries()?.count == 0)
     }
     
+    func testFirstName() {
+        let name = self.testObject.generateDefaultNameFor(category: .cherry)
+        XCTAssertTrue(name == FruitCategory.cherry.rawValue + " 0")
+    }
+    
+    func testSecondName() {
+        
+        let fruit = Fruit(name:  self.testObject.generateDefaultNameFor(category: .cherry), category: .cherry)
+        self.testObject.data.append(fruit)
+        let name = self.testObject.generateDefaultNameFor(category: .cherry)
+        XCTAssertTrue(name == FruitCategory.cherry.rawValue + " 1")
+
+    }
+    
+    func testThirdName() {
+        let fruit = Fruit(name:  self.testObject.generateDefaultNameFor(category: .cherry), category: .cherry)
+        self.testObject.data.append(fruit)
+        let fruit0 = Fruit(name:  self.testObject.generateDefaultNameFor(category: .cherry), category: .cherry)
+        self.testObject.data.append(fruit0)
+        let name = self.testObject.generateDefaultNameFor(category: .cherry)
+        XCTAssertTrue(name == FruitCategory.cherry.rawValue + " 2")
+
+    }
+    
+    func testFillSecondName(){
+        let fruit = Fruit(name:  self.testObject.generateDefaultNameFor(category: .cherry), category: .cherry)
+        self.testObject.data.append(fruit)
+        let fruit0 = Fruit(name:  self.testObject.generateDefaultNameFor(category: .cherry), category: .cherry)
+        self.testObject.data.append(fruit0)
+        let fruit1 = Fruit(name:  self.testObject.generateDefaultNameFor(category: .cherry), category: .cherry)
+        self.testObject.data.append(fruit1)
+        fruit0.name = "Hugo"
+        let name = self.testObject.generateDefaultNameFor(category: .cherry)
+        XCTAssertTrue(name == FruitCategory.cherry.rawValue + " 1","Name is \(name)")
+
+    }
  
     
 }

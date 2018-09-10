@@ -138,7 +138,7 @@ class FruitAdapterTests: XCTestCase {
             return
         }
         XCTAssertTrue(cherry.category == .cherry)
-        XCTAssertTrue(cherry.name == "Noname")
+        XCTAssertTrue(cherry.name == "Cherry 0")
     }
     
     func testAddObjectForInvalidSection(){
