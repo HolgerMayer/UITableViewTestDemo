@@ -284,4 +284,55 @@ class DemoTableViewControllerTableViewDataSourceTests: XCTestCase {
         
     }
    
+    func testTableViewMoveRowAt(){
+        let mockAdapter = ObjectAdapterMock()
+        self.testObject.dataSource = mockAdapter
+        
+        let mockTableView = MockTableView()
+        
+        self.testObject.tableView(mockTableView, moveRowAt: IndexPath(row: 0, section: 1), to: IndexPath(row: 3, section: 2))
+        
+        XCTAssertTrue(mockAdapter.didCall_moveRowAtSection)
+        XCTAssertTrue(mockAdapter.parameterSection == 1)
+        XCTAssertTrue(mockAdapter.parameterRow == 0)
+        XCTAssertTrue(mockAdapter.parameter1Section == 2)
+        XCTAssertTrue(mockAdapter.parameter1Row == 3)
+
+    }
+    
+    func testTableViewtargetIndexPathForMoveFromRowAt_LowerDestinationSection(){
+        let mockAdapter = ObjectAdapterMock()
+        mockAdapter.valueForNumberOfRowsInSection = 5
+        let mockTableView = MockTableView()
+        
+        let indexPath = self.testObject.tableView(mockTableView, targetIndexPathForMoveFromRowAt: IndexPath(row: 3, section: 4), toProposedIndexPath: IndexPath(row: 2, section: 2))
+        
+        XCTAssertTrue(indexPath.section == 4)
+        XCTAssertTrue(indexPath.row == 0)
+    }
+    
+    
+    func testTableViewtargetIndexPathForMoveFromRowAt_SameDestinationSection(){
+        let mockAdapter = ObjectAdapterMock()
+        mockAdapter.valueForNumberOfRowsInSection = 5
+        let mockTableView = MockTableView()
+        
+        let indexPath = self.testObject.tableView(mockTableView, targetIndexPathForMoveFromRowAt: IndexPath(row: 3, section: 4), toProposedIndexPath: IndexPath(row: 2, section: 4))
+        
+        XCTAssertTrue(indexPath.section == 4)
+        XCTAssertTrue(indexPath.row == 2)
+
+    }
+    
+    func testTableViewtargetIndexPathForMoveFromRowAt_HigherDestinationSection(){
+        let mockAdapter = ObjectAdapterMock()
+        mockAdapter.valueForNumberOfRowsInSection = 7
+        self.testObject.dataSource = mockAdapter
+        
+        let indexPath = self.testObject.tableView(self.testObject.tableView, targetIndexPathForMoveFromRowAt: IndexPath(row: 3, section: 4), toProposedIndexPath: IndexPath(row: 2, section: 8))
+        
+        XCTAssertTrue(indexPath.section == 4)
+        XCTAssertTrue(indexPath.row == 6,"Row should be 6 is \(indexPath.row)" )
+
+    }
 }

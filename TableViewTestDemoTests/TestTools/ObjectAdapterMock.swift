@@ -10,6 +10,7 @@ import UIKit
 @testable import TableViewTestDemo
 
 class ObjectAdapterMock : ObjectAdapterProtocol {
+ 
     
     
     
@@ -23,6 +24,7 @@ class ObjectAdapterMock : ObjectAdapterProtocol {
     var didCall_sectionTitleFor = false
     var didCall_addObjectTo = false
     var didCall_deleteObjectFor = false
+    var didCall_moveRowAtSection = false
     
     var valueForNumberOfSections : Int = 0
     var valueForNumberOfRowsInSection : Int = 0
@@ -32,7 +34,9 @@ class ObjectAdapterMock : ObjectAdapterProtocol {
     var valueForInsertIndexPath = IndexPath(row: 0, section: 0)
     var parameterSection = -1
     var parameterRow = -1
-    
+    var parameter1Section = -1
+    var parameter1Row = -1
+
     func registerCells(in tableView: UITableView) {
         didCall_registerCells = true
         let bundle = Bundle(for:FruitAdapter.self)
@@ -86,4 +90,12 @@ class ObjectAdapterMock : ObjectAdapterProtocol {
         parameterRow = row
     }
 
+    func moveRowAtSection(sourceSection: Int, moveRowAtRow sourceRow: Int, toDestinationSection destinationSection: Int, destinationRow: Int) {
+        didCall_moveRowAtSection = true
+        parameterSection = sourceSection
+        parameterRow = sourceRow
+        parameter1Section = destinationSection
+        parameter1Row = destinationRow
+    }
+    
 }

@@ -152,4 +152,36 @@ class TableViewTestDemoUITests: XCTestCase {
 
     }
  
+    
+    func testReorder(){
+        
+        
+        let app = XCUIApplication()
+        let tableView = app.tables["ArrayObjectTableView"]
+        let addbuttonButton = tableView.otherElements["Apples"].buttons["addButton"]
+        addbuttonButton.tap()
+        addbuttonButton.tap()
+        
+        let demotableNavigationBar = app.navigationBars["DemoTable"]
+        demotableNavigationBar.buttons["Edit"].tap()
+        
+         let reorderApple1100Button = tableView.buttons["Reorder Apple 1, 10.0"]
+        let reorderGoldenDecliciousButton = tableView.buttons["Reorder Golden Delicious, 20.0"]
+        
+        let reorderStrawberry100Button = tableView/*@START_MENU_TOKEN@*/.buttons["Reorder Strawberry, 10.0"]/*[[".cells[\"Strawberry\"].buttons[\"Reorder Strawberry, 10.0\"]",".buttons[\"Reorder Strawberry, 10.0\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+
+        reorderGoldenDecliciousButton.press(forDuration: 0.5, thenDragTo: reorderApple1100Button)
+        reorderApple1100Button.press(forDuration: 0.5, thenDragTo: reorderStrawberry100Button)
+
+        demotableNavigationBar.buttons["Done"].tap()
+        
+        // Offset 2 because of berrys !!!
+        let cell0 = tableView.cells.allElementsBoundByIndex[2]
+        let cell1 = tableView.cells.allElementsBoundByIndex[3]
+        let cell2 = tableView.cells.allElementsBoundByIndex[4]
+        XCTAssertTrue(cell0.identifier == "Apple 1", "Identifier should b Apple 1 is >\(cell0.identifier)<")
+        XCTAssertTrue(cell1.identifier == "Apple 0", "Identifier should b Apple 0 is >\(cell1.identifier)<")
+        XCTAssertTrue(cell2.identifier == "Golden Delicious", "Identifier should be Golden Deliciousis >\(cell2.identifier)<")
+
+    }
 }

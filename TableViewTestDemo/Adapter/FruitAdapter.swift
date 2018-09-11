@@ -118,6 +118,8 @@ class FruitAdapter : ObjectAdapterProtocol {
         return IndexPath(row: row, section: section)
     }
 
+ 
+    
     func deleteObjectFor(section: Int, row: Int) {
         let object = objectFor(section: section, row: row)
         
@@ -131,4 +133,22 @@ class FruitAdapter : ObjectAdapterProtocol {
         }
     }
 
+    func moveRowAtSection(sourceSection:Int, moveRowAtRow sourceRow:Int, toDestinationSection destinationSection:Int, destinationRow:Int){
+        let movedFruit = self.objectFor(section: sourceSection,row: sourceRow) as? Fruit
+        let targetFruit = self.objectFor(section: destinationSection,row: destinationRow) as? Fruit
+        self.deleteObjectFor(section: sourceSection, row: sourceRow)
+
+        if destinationSection < sourceSection {
+            self.model.data.insert(movedFruit!, at:0)
+        } else if destinationSection > sourceRow {
+            self.model.data.insert(movedFruit!, at: self.model.data.endIndex)
+        } else { // same section
+            let index = self.model.data.index(of: targetFruit!)
+            if index != nil {
+                self.model.data.insert(movedFruit!, at: index!)
+            } else {
+                self.model.data.insert(movedFruit!, at: self.model.data.endIndex)
+          }
+        }
+    }
 }

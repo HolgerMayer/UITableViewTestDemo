@@ -113,4 +113,11 @@ class DemoTableViewControllerInitialSetupTests: XCTestCase {
         XCTAssertFalse(mockTableView.didCall_deleteRows_at)
 
     }
+    
+    func testTableViewMoveRowAT_NoDataSource(){
+        self.testObject.dataSource = nil
+        let mockTableView = MockTableView()
+        self.testObject.tableView(mockTableView, moveRowAt: IndexPath(row: 0, section: 1), to: IndexPath(row: 1, section: 1))
+ 
+    }
 }

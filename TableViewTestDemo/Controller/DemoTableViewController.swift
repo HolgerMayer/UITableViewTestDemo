@@ -139,6 +139,30 @@ class DemoTableViewController: UITableViewController {
         }
          */
     }
+    
+    // dragging cells
+    
+    override public func tableView(_ tableView: UITableView, targetIndexPathForMoveFromRowAt sourceIndexPath: IndexPath, toProposedIndexPath proposedDestinationIndexPath: IndexPath) -> IndexPath {
+        if sourceIndexPath.section != proposedDestinationIndexPath.section {
+            var row = 0
+            if sourceIndexPath.section < proposedDestinationIndexPath.section {
+                row = self.tableView(tableView, numberOfRowsInSection: sourceIndexPath.section) - 1
+            }
+            return IndexPath(row: row, section: sourceIndexPath.section)
+        }
+        return proposedDestinationIndexPath
+    }
+    
+    override public func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        guard let dataSource = self.dataSource else {
+            print("Warning : DemoTableViewController datasource not set")
+            return
+        }
+        
+        dataSource.moveRowAtSection(sourceSection:sourceIndexPath.section, moveRowAtRow:sourceIndexPath.row,
+                                                     toDestinationSection:destinationIndexPath.section, destinationRow:destinationIndexPath.row)
+        
+    }
 }
 
 extension DemoTableViewController : GroupHeaderViewDelegate {

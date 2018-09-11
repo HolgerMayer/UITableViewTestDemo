@@ -14,6 +14,8 @@ class MockTableView: UITableView {
     var didCall_deleteRows_at = false
     var didCall_insertRows_at = false
     
+    var value_numberOfRowsInSection = -1
+    
     var registeredIdentifier : String = ""
     var parameterIndexPaths : [IndexPath]?
     
@@ -30,5 +32,9 @@ class MockTableView: UITableView {
     override func insertRows(at indexPaths: [IndexPath], with animation: UITableViewRowAnimation) {
         didCall_insertRows_at = true
         parameterIndexPaths = indexPaths
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return value_numberOfRowsInSection
     }
 }
