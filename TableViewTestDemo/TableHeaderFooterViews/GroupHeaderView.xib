@@ -28,6 +28,7 @@
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VuD-Lf-9Ht">
                     <rect key="frame" x="343" y="9" width="22" height="22"/>
+                    <accessibility key="accessibilityConfiguration" identifier="addButton"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="22" id="CC9-0E-V81"/>
                     </constraints>

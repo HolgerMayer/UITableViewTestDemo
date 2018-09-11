@@ -29,6 +29,7 @@ class DemoTableViewController: UITableViewController {
         }
         
         dataSource.registerCells(in: self.tableView)
+        self.tableView.accessibilityIdentifier = "ArrayObjectTableView"
      
         navigationItem.rightBarButtonItem = editButtonItem
     }
@@ -76,6 +77,7 @@ class DemoTableViewController: UITableViewController {
                 let string = object as? String
                 if string != nil {
                     cell.textLabel?.text = string
+                    cell.accessibilityIdentifier = string
                 } else {
                     cell.textLabel?.text = "Object is no string"
                 }
@@ -83,7 +85,7 @@ class DemoTableViewController: UITableViewController {
             }
             
             fruitCell.content = object
-            
+ 
         } else {
             cell.textLabel?.text = "No object found"
         }

@@ -17,6 +17,7 @@ class FruitTableViewCell: UITableViewCell {
                 self.detailTextLabel?.text = "no fruit object"
                 return
             }
+            self.accessibilityIdentifier = fruit.name
             self.textLabel?.text = fruit.name
             self.detailTextLabel?.text = "\(fruit.price)"
         }

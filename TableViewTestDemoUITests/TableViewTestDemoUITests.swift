@@ -52,10 +52,104 @@ class TableViewTestDemoUITests: XCTestCase {
         
     }
     
-    func testExample()  {
-        addBerry()
-        addApple()
-        addCherry()
+    func deleteFruitWithSwipeBy(name : String) {
+        let arrayobjecttableviewTable = app.tables["ArrayObjectTableView"]
+        arrayobjecttableviewTable.cells[name].swipeLeft()
+        arrayobjecttableviewTable.buttons["Delete"].tap()
     }
     
+    func testAddDeleteWorkflow()  {
+        let tableView = app.tables["ArrayObjectTableView"]
+
+        let cells = XCUIApplication().tables.cells
+        XCTAssertEqual(cells.count, 3, "found instead: \(cells.debugDescription)")
+        
+        addBerry()
+        XCTAssertEqual(cells.count, 4, "found instead: \(cells.debugDescription)")
+        let berryCell = tableView.cells["Berry 0"]
+        XCTAssertTrue(berryCell.exists, "The berry cell should be in place on the table")
+        
+        addApple()
+        XCTAssertEqual(cells.count, 5, "found instead: \(cells.debugDescription)")
+        let appleCell = tableView.cells["Apple 0"]
+        XCTAssertTrue(appleCell.exists, "The apple cell should be  in place on the table")
+        
+        addCherry()
+        XCTAssertEqual(cells.count, 6, "found instead: \(cells.debugDescription)")
+        let cherryCell = tableView.cells["Cherry 0"]
+        XCTAssertTrue(cherryCell.exists, "The cherry cell should be in place on the table")
+
+        deleteFruitWithSwipeBy(name: "Apple 0")
+        XCTAssertEqual(cells.count, 5, "found instead: \(cells.debugDescription)")
+        let noAppleCell = tableView.cells["Apple 0"]
+        XCTAssertFalse(noAppleCell.exists, "The apple cell should not exist")
+
+        deleteFruitWithSwipeBy(name: "Cherry 0")
+        XCTAssertEqual(cells.count, 4, "found instead: \(cells.debugDescription)")
+        let noCherryCell = tableView.cells["Cherry 0"]
+        XCTAssertFalse(noCherryCell.exists, "The cherry cell should not exist")
+
+        deleteFruitWithSwipeBy(name: "Berry 0")
+        XCTAssertEqual(cells.count, 3, "found instead: \(cells.debugDescription)")
+        let noBerryCell = tableView.cells["Berry 0"]
+        XCTAssertFalse(noBerryCell.exists, "The berry cell should not exist")
+
+        
+   }
+    
+    func testNameGeneration(){
+        let tableView = app.tables["ArrayObjectTableView"]
+        let cells = XCUIApplication().tables.cells
+
+        XCTAssertEqual(cells.count, 3, "found instead: \(cells.debugDescription)")
+        var noBerryCell = tableView.cells["Berry 0"]
+        XCTAssertFalse(noBerryCell.exists, "The berry 0 cell should not exist")
+
+        noBerryCell = tableView.cells["Berry 1"]
+        XCTAssertFalse(noBerryCell.exists, "The berry 1 cell should not exist")
+
+        noBerryCell = tableView.cells["Berry 2"]
+        XCTAssertFalse(noBerryCell.exists, "The berry 2 cell should not exist")
+
+        addBerry()
+        addBerry()
+        addBerry()
+
+        var berryCell = tableView.cells["Berry 0"]
+        XCTAssertTrue(berryCell.exists, "The berry cell 0 should be  in place on the table")
+        berryCell = tableView.cells["Berry 1"]
+        XCTAssertTrue(berryCell.exists, "The berry cell 1 should be  in place on the table")
+        berryCell = tableView.cells["Berry 2"]
+        XCTAssertTrue(berryCell.exists, "The berry cell 2 should be  in place on the table")
+
+        deleteFruitWithSwipeBy(name: "Berry 1")
+
+        berryCell = tableView.cells["Berry 0"]
+        XCTAssertTrue(berryCell.exists, "The berry cell 0 should be  in place on the table")
+        noBerryCell = tableView.cells["Berry 1"]
+        XCTAssertFalse(noBerryCell.exists, "The berry 1 cell should not exist")
+        berryCell = tableView.cells["Berry 2"]
+        XCTAssertTrue(berryCell.exists, "The berry cell 2 should be  in place on the table")
+
+        addBerry()
+
+        berryCell = tableView.cells["Berry 0"]
+        XCTAssertTrue(berryCell.exists, "The berry cell 0 should be  in place on the table")
+        berryCell = tableView.cells["Berry 1"]
+        XCTAssertTrue(berryCell.exists, "The berry cell 1 should be  in place on the table")
+        berryCell = tableView.cells["Berry 2"]
+        XCTAssertTrue(berryCell.exists, "The berry cell 2 should be  in place on the table")
+
+        addBerry()
+        berryCell = tableView.cells["Berry 0"]
+        XCTAssertTrue(berryCell.exists, "The berry cell 0 should be  in place on the table")
+        berryCell = tableView.cells["Berry 1"]
+        XCTAssertTrue(berryCell.exists, "The berry cell 1 should be  in place on the table")
+        berryCell = tableView.cells["Berry 2"]
+        XCTAssertTrue(berryCell.exists, "The berry cell 2 should be  in place on the table")
+        berryCell = tableView.cells["Berry 3"]
+        XCTAssertTrue(berryCell.exists, "The berry cell 3 should be  in place on the table")
+
+    }
+ 
 }
