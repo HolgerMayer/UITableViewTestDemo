@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		5464FEFD2145ABBA00C406E8 /* TableViewTestDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54DB1D342143F83200150C65 /* TableViewTestDemoUITests.swift */; };
+		54BD9CE0214910490035D145 /* EditableFruitTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BD9CDE214910490035D145 /* EditableFruitTableViewCell.swift */; };
+		54BD9CE1214910490035D145 /* EditableFruitTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54BD9CDF214910490035D145 /* EditableFruitTableViewCell.xib */; };
+		54BD9CE3214912AA0035D145 /* CommonTableViewCellProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BD9CE2214912AA0035D145 /* CommonTableViewCellProtocol.swift */; };
+		54BD9CE5214915AF0035D145 /* EditableFruitTableViewCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BD9CE4214915AF0035D145 /* EditableFruitTableViewCellTests.swift */; };
 		54CCE50B2144755200268813 /* Fruit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CCE50A2144755200268813 /* Fruit.swift */; };
 		54CCE50E2144775F00268813 /* FruitTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CCE50C2144775F00268813 /* FruitTableViewCell.swift */; };
 		54CCE50F2144775F00268813 /* FruitTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54CCE50D2144775F00268813 /* FruitTableViewCell.xib */; };
@@ -51,6 +55,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		54BD9CDE214910490035D145 /* EditableFruitTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditableFruitTableViewCell.swift; sourceTree = "<group>"; };
+		54BD9CDF214910490035D145 /* EditableFruitTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditableFruitTableViewCell.xib; sourceTree = "<group>"; };
+		54BD9CE2214912AA0035D145 /* CommonTableViewCellProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonTableViewCellProtocol.swift; sourceTree = "<group>"; };
+		54BD9CE4214915AF0035D145 /* EditableFruitTableViewCellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditableFruitTableViewCellTests.swift; sourceTree = "<group>"; };
 		54CCE50A2144755200268813 /* Fruit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fruit.swift; sourceTree = "<group>"; };
 		54CCE50C2144775F00268813 /* FruitTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FruitTableViewCell.swift; sourceTree = "<group>"; };
 		54CCE50D2144775F00268813 /* FruitTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FruitTableViewCell.xib; sourceTree = "<group>"; };
@@ -121,6 +129,7 @@
 			isa = PBXGroup;
 			children = (
 				54CCE51521447EFA00268813 /* FruitTableViewCellTests.swift */,
+				54BD9CE4214915AF0035D145 /* EditableFruitTableViewCellTests.swift */,
 			);
 			path = TableViewCells;
 			sourceTree = "<group>";
@@ -214,8 +223,11 @@
 		54DB1D432143F84E00150C65 /* TableViewCells */ = {
 			isa = PBXGroup;
 			children = (
+				54BD9CE2214912AA0035D145 /* CommonTableViewCellProtocol.swift */,
 				54CCE50C2144775F00268813 /* FruitTableViewCell.swift */,
 				54CCE50D2144775F00268813 /* FruitTableViewCell.xib */,
+				54BD9CDE214910490035D145 /* EditableFruitTableViewCell.swift */,
+				54BD9CDF214910490035D145 /* EditableFruitTableViewCell.xib */,
 			);
 			path = TableViewCells;
 			sourceTree = "<group>";
@@ -378,6 +390,7 @@
 			files = (
 				54CCE50F2144775F00268813 /* FruitTableViewCell.xib in Resources */,
 				54DB1D1F2143F83200150C65 /* LaunchScreen.storyboard in Resources */,
+				54BD9CE1214910490035D145 /* EditableFruitTableViewCell.xib in Resources */,
 				54DB1D1C2143F83200150C65 /* Assets.xcassets in Resources */,
 				54DB1D1A2143F83100150C65 /* Main.storyboard in Resources */,
 				54F477D421454C820002E278 /* GroupHeaderView.xib in Resources */,
@@ -413,6 +426,8 @@
 				54DB1D152143F83100150C65 /* AppDelegate.swift in Sources */,
 				54CCE50E2144775F00268813 /* FruitTableViewCell.swift in Sources */,
 				54DB1D452143F86900150C65 /* DemoTableViewController.swift in Sources */,
+				54BD9CE3214912AA0035D145 /* CommonTableViewCellProtocol.swift in Sources */,
+				54BD9CE0214910490035D145 /* EditableFruitTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -420,6 +435,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				54BD9CE5214915AF0035D145 /* EditableFruitTableViewCellTests.swift in Sources */,
 				54CCE51C2144894200268813 /* FruitAdapterTests.swift in Sources */,
 				54CCE518214487DC00268813 /* FruitTests.swift in Sources */,
 				54DB1D552144036C00150C65 /* ObjectAdapterMock.swift in Sources */,

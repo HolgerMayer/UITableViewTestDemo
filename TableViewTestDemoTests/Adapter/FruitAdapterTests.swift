@@ -30,7 +30,7 @@ class FruitAdapterTests: XCTestCase {
         self.testObject.registerCells(in: tableView)
         
         XCTAssertTrue(tableView.didCall_registerNib)
-        XCTAssertTrue(tableView.registeredIdentifier == "FruitTableViewCellID")
+        XCTAssertNotNil(tableView.registeredIdentifier.filter({ $0 == "EditableFruitTableViewCellID" }).first)
     }
 
     func testNumberOfSections(){
@@ -45,10 +45,10 @@ class FruitAdapterTests: XCTestCase {
     }
     
     func testCellIDFor() {
-        XCTAssertTrue(self.testObject.cellIDFor(section: 0, row: 0) == "FruitTableViewCellID")
-        XCTAssertTrue(self.testObject.cellIDFor(section: 1, row: 1) == "FruitTableViewCellID")
-        XCTAssertTrue(self.testObject.cellIDFor(section: 2, row: 2) == "FruitTableViewCellID")
-        XCTAssertTrue(self.testObject.cellIDFor(section: 55, row: 3) == "FruitTableViewCellID")
+        XCTAssertTrue(self.testObject.cellIDFor(section: 0, row: 0) == "EditableFruitTableViewCellID")
+        XCTAssertTrue(self.testObject.cellIDFor(section: 1, row: 1) == "EditableFruitTableViewCellID")
+        XCTAssertTrue(self.testObject.cellIDFor(section: 2, row: 2) == "EditableFruitTableViewCellID")
+        XCTAssertTrue(self.testObject.cellIDFor(section: 55, row: 3) == "EditableFruitTableViewCellID")
    }
    
     func testObjectForSection0(){

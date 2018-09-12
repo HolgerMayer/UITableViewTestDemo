@@ -41,6 +41,7 @@ class ObjectAdapterMock : ObjectAdapterProtocol {
         didCall_registerCells = true
         let bundle = Bundle(for:FruitAdapter.self)
         tableView.register(UINib(nibName: "FruitTableViewCell", bundle: bundle), forCellReuseIdentifier: "FruitTableViewCellID")
+        tableView.register(UINib(nibName: "EditableFruitTableViewCell", bundle: bundle), forCellReuseIdentifier: "EditableFruitTableViewCellID")
         
         let nib = UINib(nibName:"GroupHeaderView", bundle: bundle)
         tableView.register(nib, forHeaderFooterViewReuseIdentifier: "GroupHeaderViewID")

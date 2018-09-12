@@ -19,7 +19,8 @@ class FruitAdapter : ObjectAdapterProtocol {
     func registerCells(in tableView: UITableView) {
         let bundle = Bundle(for:FruitAdapter.self)
         tableView.register(UINib(nibName: "FruitTableViewCell", bundle: bundle), forCellReuseIdentifier: "FruitTableViewCellID")
-        let nib = UINib(nibName:"GroupHeaderView", bundle: bundle)
+        tableView.register(UINib(nibName: "EditableFruitTableViewCell", bundle: bundle), forCellReuseIdentifier: "EditableFruitTableViewCellID")
+      let nib = UINib(nibName:"GroupHeaderView", bundle: bundle)
         tableView.register(nib, forHeaderFooterViewReuseIdentifier: "GroupHeaderViewID")
 
     }
@@ -43,7 +44,7 @@ class FruitAdapter : ObjectAdapterProtocol {
     }
     
     func cellIDFor(section: Int, row: Int) -> String {
-        return "FruitTableViewCellID"
+        return "EditableFruitTableViewCellID"
     }
     
     func objectFor(section: Int, row: Int) -> Any? {

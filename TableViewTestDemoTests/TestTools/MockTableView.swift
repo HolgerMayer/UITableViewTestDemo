@@ -16,12 +16,12 @@ class MockTableView: UITableView {
     
     var value_numberOfRowsInSection = -1
     
-    var registeredIdentifier : String = ""
+    var registeredIdentifier = [String]()
     var parameterIndexPaths : [IndexPath]?
     
     override func register(_ nib: UINib?, forCellReuseIdentifier identifier: String) {
         didCall_registerNib = true
-        registeredIdentifier = identifier
+        registeredIdentifier.append(identifier)
     }
 
     override func deleteRows(at indexPaths: [IndexPath], with animation: UITableViewRowAnimation) {

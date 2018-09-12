@@ -73,7 +73,7 @@ class DemoTableViewController: UITableViewController {
         
         if object != nil {
             
-            guard let fruitCell = cell as? FruitTableViewCell else {
+            guard var commonCell = cell as? CommonTableViewCellProtocol else {
                 let string = object as? String
                 if string != nil {
                     cell.textLabel?.text = string
@@ -84,7 +84,7 @@ class DemoTableViewController: UITableViewController {
                 return cell
             }
             
-            fruitCell.content = object
+            commonCell.content = object
  
         } else {
             cell.textLabel?.text = "No object found"

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FruitTableViewCell: UITableViewCell {
+class FruitTableViewCell: UITableViewCell, CommonTableViewCellProtocol {
 
     var content : Any? {
         didSet {
@@ -28,10 +28,6 @@ class FruitTableViewCell: UITableViewCell {
         // Initialization code
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
+    
     
 }

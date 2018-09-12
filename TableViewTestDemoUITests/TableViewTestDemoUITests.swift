@@ -53,9 +53,10 @@ class TableViewTestDemoUITests: XCTestCase {
     }
     
     func deleteFruitWithSwipeBy(name : String) {
-        let arrayobjecttableviewTable = app.tables["ArrayObjectTableView"]
-        arrayobjecttableviewTable.cells[name].swipeLeft()
-        arrayobjecttableviewTable.buttons["Delete"].tap()
+        let tableView = app.tables["ArrayObjectTableView"]
+        
+        tableView.textFields[name].swipeLeft()
+        tableView.buttons["Delete"].tap()
     }
     
     func testAddDeleteWorkflow()  {
@@ -165,10 +166,10 @@ class TableViewTestDemoUITests: XCTestCase {
         let demotableNavigationBar = app.navigationBars["DemoTable"]
         demotableNavigationBar.buttons["Edit"].tap()
         
-         let reorderApple1100Button = tableView.buttons["Reorder Apple 1, 10.0"]
-        let reorderGoldenDecliciousButton = tableView.buttons["Reorder Golden Delicious, 20.0"]
+         let reorderApple1100Button = tableView.cells.containing(.textField, identifier:"Apple 1").buttons["Reorder"]
+          let reorderGoldenDecliciousButton = tableView.cells.containing(.textField, identifier:"Golden Delicious").buttons["Reorder"]
         
-        let reorderStrawberry100Button = tableView/*@START_MENU_TOKEN@*/.buttons["Reorder Strawberry, 10.0"]/*[[".cells[\"Strawberry\"].buttons[\"Reorder Strawberry, 10.0\"]",".buttons[\"Reorder Strawberry, 10.0\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+        let reorderStrawberry100Button = tableView.cells.containing(.textField, identifier:"Strawberry").buttons["Reorder"]
 
         reorderGoldenDecliciousButton.press(forDuration: 0.5, thenDragTo: reorderApple1100Button)
         reorderApple1100Button.press(forDuration: 0.5, thenDragTo: reorderStrawberry100Button)

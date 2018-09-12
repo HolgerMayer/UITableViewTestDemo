@@ -1,17 +1,17 @@
 //
-//  FruitTableViewCellTests.swift
+//  EditableFruitTableViewCellTests.swift
 //  TableViewTestDemoTests
 //
-//  Created by holgermayer on 09.09.18.
+//  Created by holgermayer on 12.09.18.
 //  Copyright © 2018 holgermayer. All rights reserved.
 //
 
 import XCTest
 @testable import TableViewTestDemo
 
-class FruitTableViewCellTests: XCTestCase {
+class EditableFruitTableViewCellTests: XCTestCase {
     
-    var testObject : FruitTableViewCell!
+    var testObject : EditableFruitTableViewCell!
     
     
     override func setUp() {
@@ -24,9 +24,9 @@ class FruitTableViewCellTests: XCTestCase {
         controller?.dataSource = mockAdapter
         controller?.loadViewIfNeeded()
         
-        let cell = controller?.tableView?.dequeueReusableCell(withIdentifier: "FruitTableViewCellID")
+        let cell = controller?.tableView?.dequeueReusableCell(withIdentifier: "EditableFruitTableViewCellID")
         XCTAssertNotNil(cell)
-        guard let fruitCell = cell as? FruitTableViewCell else {
+        guard let fruitCell = cell as? EditableFruitTableViewCell else {
             XCTAssertTrue(false)
             return
         }
@@ -39,30 +39,32 @@ class FruitTableViewCellTests: XCTestCase {
         super.tearDown()
     }
     
-    func testTextLabelNotNil() {
-        XCTAssertNotNil(testObject.textLabel)
+    func testTitleFieldNotNil() {
+        XCTAssertNotNil(testObject.titleField)
     }
- 
-    func testDetailTextLabelNotNil() {
-        XCTAssertNotNil(testObject.detailTextLabel)
+    
+    func testPriceFieldNotNil() {
+        XCTAssertNotNil(testObject.priceField)
     }
-
+    
     func testSetContentToNil() {
         testObject.content = nil
         XCTAssertNil(testObject.content)
-        XCTAssertTrue(testObject.textLabel?.text == "Error", "textLabel should be : Error - is \((testObject.textLabel?.text)!)")
+        XCTAssertTrue(testObject.titleField?.text == "")
+        XCTAssertTrue(testObject.priceField?.text == "")
     }
     
     func testSetContentToWrongObjectClass() {
         testObject.content = Date()
         XCTAssertNotNil(testObject.content)
-        XCTAssertTrue(testObject.detailTextLabel?.text == "no fruit object", "textLabel should be : no fruit object - is \((testObject.detailTextLabel?.text)!)")
+        XCTAssertTrue(testObject.titleField?.text == "Wrong object class")
+        XCTAssertTrue(testObject.priceField?.text == "")
     }
     
     func testSetContentToFruit() {
         testObject.content = Fruit(name: "Strawberry", category: .berry, price: 22.0)
         XCTAssertNotNil(testObject.content)
-        XCTAssertTrue(testObject.textLabel?.text == "Strawberry", "textLabel should be : Strawberry - is \((testObject.textLabel?.text)!)")
-        XCTAssertTrue(testObject.detailTextLabel?.text == "\(22.0)", "textLabel should be : 22.0 - is \((testObject.detailTextLabel?.text)!)")
+        XCTAssertTrue(testObject.titleField?.text == "Strawberry", "textLabel should be : Strawberry - is \((testObject.titleField?.text)!)")
+        XCTAssertTrue(testObject.priceField?.text == "\(22.0)", "textLabel should be : 22.0 - is \((testObject.priceField?.text)!)")
     }
 }
