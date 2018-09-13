@@ -84,7 +84,9 @@ class DemoTableViewController: UITableViewController {
                 return cell
             }
             
+            commonCell.delegate = self
             commonCell.content = object
+            commonCell.section = indexPath.section
  
         } else {
             cell.textLabel?.text = "No object found"
@@ -115,7 +117,7 @@ class DemoTableViewController: UITableViewController {
     
     
     override public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 40.0
+        return 68.0
     }
     
     override public func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
@@ -177,6 +179,27 @@ extension DemoTableViewController : GroupHeaderViewDelegate {
 
         let indexPath = dataSource.addObjectTo(section:section)
         self.tableView.insertRows(at: [indexPath], with: .right)
+        
+    }
+}
+
+extension DemoTableViewController : EditableFruitTableViewCellDelegate {
+
+    func editableFruitTableViewCellRequestUniqueNames(for section:Int)-> [String] {
+        guard let dataSource = self.dataSource else {
+            print("Warning : DemoTableViewController datasource not set")
+            return [String]()
+        }
+        
+        return dataSource.uniqueNames(for :section)
+    }
+    
+    
+    func editableFruitTableViewCellBeginEditing(_ cell: EditableFruitTableViewCell) {
+      
+    }
+    
+    func editableFruitTableViewCellValueDidChange(_ cell: EditableFruitTableViewCell, value: Any?) {
         
     }
     

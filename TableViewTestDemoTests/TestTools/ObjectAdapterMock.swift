@@ -10,6 +10,7 @@ import UIKit
 @testable import TableViewTestDemo
 
 class ObjectAdapterMock : ObjectAdapterProtocol {
+    
  
     
     
@@ -25,6 +26,7 @@ class ObjectAdapterMock : ObjectAdapterProtocol {
     var didCall_addObjectTo = false
     var didCall_deleteObjectFor = false
     var didCall_moveRowAtSection = false
+    var didCall_UniqueNames = false
     
     var valueForNumberOfSections : Int = 0
     var valueForNumberOfRowsInSection : Int = 0
@@ -32,6 +34,7 @@ class ObjectAdapterMock : ObjectAdapterProtocol {
     var objectForSectionRow : Any? = Date()
     var valueForHeaderTitle = "Header Title"
     var valueForInsertIndexPath = IndexPath(row: 0, section: 0)
+    var valueForUniqueNames = [String]()
     var parameterSection = -1
     var parameterRow = -1
     var parameter1Section = -1
@@ -98,5 +101,12 @@ class ObjectAdapterMock : ObjectAdapterProtocol {
         parameter1Section = destinationSection
         parameter1Row = destinationRow
     }
+    
+    func uniqueNames(for section: Int) -> [String] {
+        didCall_UniqueNames = true
+        parameter1Section = section
+        return valueForUniqueNames
+    }
+
     
 }

@@ -9,6 +9,7 @@
 import UIKit
 
 class FruitTableViewCell: UITableViewCell, CommonTableViewCellProtocol {
+    
 
     var content : Any? {
         didSet {
@@ -22,7 +23,11 @@ class FruitTableViewCell: UITableViewCell, CommonTableViewCellProtocol {
             self.detailTextLabel?.text = "\(fruit.price)"
         }
     }
+ 
+    var delegate: EditableFruitTableViewCellDelegate?
+    var section: Int = -1
     
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

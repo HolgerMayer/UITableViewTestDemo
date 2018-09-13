@@ -105,32 +105,32 @@ class FruitAdapterTests: XCTestCase {
     
     func testAddObjectForSection0(){
         let totalCount = self.testObject.model.data.count
-        let berryCount = (self.testObject.model.berrys()?.count)!
+        let berryCount = self.testObject.model.berrys().count
         
         let _ = self.testObject.addObjectTo(section: 0)
  
         XCTAssertTrue(totalCount + 1 == self.testObject.model.data.count)
-        XCTAssertTrue(berryCount + 1 == (self.testObject.model.berrys()?.count)!)
+        XCTAssertTrue(berryCount + 1 == self.testObject.model.berrys().count)
     }
     
     func testAddObjectForSection1(){
         let totalCount = self.testObject.model.data.count
-        let appleCount = (self.testObject.model.apples()?.count)!
+        let appleCount = self.testObject.model.apples().count
         
         let _ = self.testObject.addObjectTo(section: 1)
         
         XCTAssertTrue(totalCount + 1 == self.testObject.model.data.count)
-        XCTAssertTrue(appleCount + 1 == (self.testObject.model.apples()?.count)!)
+        XCTAssertTrue(appleCount + 1 == self.testObject.model.apples().count)
     }
     
     func testAddObjectForSection2(){
         let totalCount = self.testObject.model.data.count
-        let cherryCount = (self.testObject.model.cherries()?.count)!
+        let cherryCount = self.testObject.model.cherries().count
         
         let index = self.testObject.addObjectTo(section: 2)
         
         XCTAssertTrue(totalCount + 1 == self.testObject.model.data.count)
-        XCTAssertTrue(cherryCount + 1 == (self.testObject.model.cherries()?.count)!)
+        XCTAssertTrue(cherryCount + 1 == self.testObject.model.cherries().count)
         
         let fruit = self.testObject.objectFor(section: index.section, row: index.row)
         guard let cherry = fruit as? Fruit else {
@@ -151,9 +151,9 @@ class FruitAdapterTests: XCTestCase {
     }
     
     func testDeleteObjectValidIndexPath(){
-        XCTAssertTrue((self.testObject.model.apples()?.count)! == 1)
+        XCTAssertTrue(self.testObject.model.apples().count == 1)
         self.testObject.deleteObjectFor(section: 1, row: 0)
-        XCTAssertTrue((self.testObject.model.apples()?.count)! == 0)
+        XCTAssertTrue(self.testObject.model.apples().count == 0)
 
     }
     
@@ -165,19 +165,19 @@ class FruitAdapterTests: XCTestCase {
     }
     
     func testMoveRowAtSectionToNextSection(){
-        let appleCount = (self.testObject.model.apples()?.count)!
+        let appleCount = self.testObject.model.apples().count
         
         let _ = self.testObject.addObjectTo(section: 1)
         let _ = self.testObject.addObjectTo(section: 1)
-        XCTAssertTrue(appleCount + 2 == (self.testObject.model.apples()?.count)!)
+        XCTAssertTrue(appleCount + 2 == self.testObject.model.apples().count)
         
         // Move Center Row to Next Section
-        let centerObject = self.testObject.model.apples()![1]
+        let centerObject = self.testObject.model.apples()[1]
         
         self.testObject.moveRowAtSection(sourceSection: 1, moveRowAtRow: 1, toDestinationSection: 2, destinationRow: 1)
-        XCTAssertTrue(appleCount + 2 == (self.testObject.model.apples()?.count)!)
+        XCTAssertTrue(appleCount + 2 == self.testObject.model.apples().count)
 
-        let lastObject = self.testObject.model.apples()![2]
+        let lastObject = self.testObject.model.apples()[2]
         
         XCTAssertTrue(centerObject.name == lastObject.name)
         
@@ -185,58 +185,67 @@ class FruitAdapterTests: XCTestCase {
     
     
     func testMoveRowAtSectionToPreviousSection() {
-        let appleCount = (self.testObject.model.apples()?.count)!
+        let appleCount = self.testObject.model.apples().count
         
         let _ = self.testObject.addObjectTo(section: 1)
         let _ = self.testObject.addObjectTo(section: 1)
-        XCTAssertTrue(appleCount + 2 == (self.testObject.model.apples()?.count)!)
+        XCTAssertTrue(appleCount + 2 == self.testObject.model.apples().count)
 
         // Move Center Row To previous Section
-        let centerObject = self.testObject.model.apples()![1]
+        let centerObject = self.testObject.model.apples()[1]
         
         self.testObject.moveRowAtSection(sourceSection: 1, moveRowAtRow: 1, toDestinationSection: 0, destinationRow: 1)
-        XCTAssertTrue(appleCount + 2 == (self.testObject.model.apples()?.count)!)
+        XCTAssertTrue(appleCount + 2 == self.testObject.model.apples().count)
         
-        let firstObject = self.testObject.model.apples()![0]
+        let firstObject = self.testObject.model.apples()[0]
         XCTAssertTrue(centerObject.name == firstObject.name)
         
     }
     
     func testMoveRowAtSectionToFirstRowInSection(){
-        let appleCount = (self.testObject.model.apples()?.count)!
+        let appleCount = self.testObject.model.apples().count
         
         let _ = self.testObject.addObjectTo(section: 1)
         let _ = self.testObject.addObjectTo(section: 1)
-        XCTAssertTrue(appleCount + 2 == (self.testObject.model.apples()?.count)!)
+        XCTAssertTrue(appleCount + 2 == self.testObject.model.apples().count)
         
         // Move Center Row To previous Section
-        let centerObject = self.testObject.model.apples()![1]
+        let centerObject = self.testObject.model.apples()[1]
         
         self.testObject.moveRowAtSection(sourceSection: 1, moveRowAtRow: 1, toDestinationSection: 1, destinationRow: 0)
-        XCTAssertTrue(appleCount + 2 == (self.testObject.model.apples()?.count)!)
+        XCTAssertTrue(appleCount + 2 == self.testObject.model.apples().count)
         
-        let firstObject = self.testObject.model.apples()![0]
+        let firstObject = self.testObject.model.apples()[0]
         XCTAssertTrue(centerObject.name == firstObject.name)
     }
         // Move CEnter Row to first Enty in Section
         
     func testMoveRowAtSectionToSecondRowInSection(){
-        let appleCount = (self.testObject.model.apples()?.count)!
+        let appleCount = self.testObject.model.apples().count
         
         let _ = self.testObject.addObjectTo(section: 1)
         let _ = self.testObject.addObjectTo(section: 1)
-        XCTAssertTrue(appleCount + 2 == (self.testObject.model.apples()?.count)!)
+        XCTAssertTrue(appleCount + 2 == self.testObject.model.apples().count)
         
         // Move Center Row To previous Section
-        let centerObject = self.testObject.model.apples()![2]
+        let centerObject = self.testObject.model.apples()[2]
         
         self.testObject.moveRowAtSection(sourceSection: 1, moveRowAtRow: 1, toDestinationSection: 1, destinationRow: 1)
-        XCTAssertTrue(appleCount + 2 == (self.testObject.model.apples()?.count)!)
+        XCTAssertTrue(appleCount + 2 == self.testObject.model.apples().count)
         
-        let firstObject = self.testObject.model.apples()![1]
+        let firstObject = self.testObject.model.apples()[1]
         XCTAssertTrue(centerObject.name == firstObject.name)
     }
 
+    func testUniqueNames(){
+        XCTAssertTrue(self.testObject.uniqueNames(for: 0).count == 2)
+        XCTAssertTrue(self.testObject.uniqueNames(for: 0)[0] == "Strawberry")
+        XCTAssertTrue(self.testObject.uniqueNames(for: 0)[1] == "Raspberry")
+        XCTAssertTrue(self.testObject.uniqueNames(for: 1).count == 1)
+        XCTAssertTrue(self.testObject.uniqueNames(for: 1)[0] == "Golden Delicious")
+        XCTAssertTrue(self.testObject.uniqueNames(for: 2).count == 0)
+        XCTAssertTrue(self.testObject.uniqueNames(for: 55).count == 0)
+    }
   
   
 }

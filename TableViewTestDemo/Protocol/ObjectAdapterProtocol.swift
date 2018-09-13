@@ -20,4 +20,5 @@ protocol ObjectAdapterProtocol {
     func addObjectTo(section:Int) -> IndexPath
     func deleteObjectFor(section:Int, row:Int)
     func moveRowAtSection(sourceSection:Int, moveRowAtRow sourceRow:Int, toDestinationSection destinationSection:Int, destinationRow:Int)
+    func uniqueNames(for section: Int) -> [String]
 }

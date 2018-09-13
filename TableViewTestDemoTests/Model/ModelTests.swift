@@ -29,9 +29,9 @@ class ModelTests: XCTestCase {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
         XCTAssertTrue(testObject.data.count == 3)
-        XCTAssertTrue(testObject.apples()?.count == 1)
-        XCTAssertTrue(testObject.berrys()?.count == 2)
-        XCTAssertTrue(testObject.cherries()?.count == 0)
+        XCTAssertTrue(testObject.apples().count == 1)
+        XCTAssertTrue(testObject.berrys().count == 2)
+        XCTAssertTrue(testObject.cherries().count == 0)
     }
     
     func testFirstName() {

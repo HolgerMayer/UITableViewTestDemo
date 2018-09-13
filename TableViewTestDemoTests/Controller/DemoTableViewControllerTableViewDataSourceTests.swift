@@ -216,7 +216,7 @@ class DemoTableViewControllerTableViewDataSourceTests: XCTestCase {
         
         let height = self.testObject.tableView(self.testObject.tableView, heightForHeaderInSection: 0)
         
-        XCTAssertTrue(height == 40.0)
+        XCTAssertTrue(height == 68.0)
     }
     
     func testFooterViewHeight(){
@@ -252,7 +252,7 @@ class DemoTableViewControllerTableViewDataSourceTests: XCTestCase {
         self.testObject.loadViewIfNeeded()
         
         let totalCount = adapter.model.data.count
-        let berryCount = (adapter.model.berrys()?.count)!
+        let berryCount = adapter.model.berrys().count
 
         let groupHeader = self.testObject.tableView(self.testObject.tableView, viewForHeaderInSection: 0) as! GroupHeaderView
         XCTAssertNotNil(groupHeader)
@@ -260,7 +260,7 @@ class DemoTableViewControllerTableViewDataSourceTests: XCTestCase {
         self.testObject.didHitAddAction(groupHeader)
         
         XCTAssertTrue(totalCount + 1 == adapter.model.data.count)
-        XCTAssertTrue(berryCount + 1 == adapter.model.berrys()?.count)
+        XCTAssertTrue(berryCount + 1 == adapter.model.berrys().count)
 
     }
     

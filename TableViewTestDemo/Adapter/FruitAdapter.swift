@@ -11,6 +11,7 @@ import UIKit
 class FruitAdapter : ObjectAdapterProtocol {
     
     
+    
     var model = Model()
     
     init(){
@@ -33,11 +34,11 @@ class FruitAdapter : ObjectAdapterProtocol {
     func numberOfRowsInSection(section: Int) -> Int {
         switch section {
         case 0 :
-            return (model.berrys()?.count)!
+            return model.berrys().count
         case 1 :
-            return (model.apples()?.count)!
+            return model.apples().count
         case 2 :
-            return (model.cherries()?.count)!
+            return model.cherries().count
         default :
             return 0
         }
@@ -50,20 +51,20 @@ class FruitAdapter : ObjectAdapterProtocol {
     func objectFor(section: Int, row: Int) -> Any? {
         switch (section,row) {
         case (0,_) :
-            if row < (model.berrys()?.count)! {
-                return model.berrys()?[row]
+            if row < model.berrys().count {
+                return model.berrys()[row]
             } else {
                 return nil
             }
          case (1,_) :
-            if row < (model.apples()?.count)! {
-                return model.apples()?[row]
+            if row < model.apples().count {
+                return model.apples()[row]
             } else {
                 return nil
             }
         case (2,_) :
-            if row < (model.cherries()?.count)! {
-                return model.cherries()?[row]
+            if row < model.cherries().count {
+                return model.cherries()[row]
             } else {
                 return nil
             }
@@ -97,21 +98,21 @@ class FruitAdapter : ObjectAdapterProtocol {
             fruit.category = .berry
             self.model.data.append(fruit)
             let berries = self.model.berrys()
-            row = berries!.index(of:fruit)!
+            row = berries.index(of:fruit)!
             break
         case 1:
             let fruit = Fruit(name:model.generateDefaultNameFor(category: .apple))
             fruit.category = .apple
             self.model.data.append(fruit)
              let apples = self.model.apples()
-            row = apples!.index(of:fruit)!
+            row = apples.index(of:fruit)!
            break
         case 2:
             let fruit = Fruit(name:model.generateDefaultNameFor(category: .cherry))
             fruit.category = .cherry
             self.model.data.append(fruit)
             let cherries = self.model.cherries()
-            row = cherries!.index(of:fruit)!
+            row = cherries.index(of:fruit)!
             break
         default:
             break
@@ -150,6 +151,23 @@ class FruitAdapter : ObjectAdapterProtocol {
             } else {
                 self.model.data.insert(movedFruit!, at: self.model.data.endIndex)
           }
+        }
+    }
+    
+
+    func uniqueNames(for section: Int) -> [String] {
+        switch section {
+        case 0 :
+            let data = model.berrys()
+            return data.map{ $0.name}
+        case 1:
+           let data = model.apples()
+            return data.map{ $0.name}
+        case 2:
+            let data = model.cherries()
+            return data.map{ $0.name}
+        default:
+            return [String]()
         }
     }
 }

@@ -20,15 +20,15 @@ class Model {
 
     }
     
-    func berrys() -> [Fruit]? {
+    func berrys() -> [Fruit] {
         return data.filter{ $0.category == .berry }
     }
     
-    func apples() -> [Fruit]? {
+    func apples() -> [Fruit] {
         return data.filter{ $0.category == .apple }
     }
     
-    func cherries() -> [Fruit]? {
+    func cherries() -> [Fruit] {
         return data.filter{ $0.category == .cherry }
     }
     

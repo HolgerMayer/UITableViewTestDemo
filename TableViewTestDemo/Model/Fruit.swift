@@ -24,4 +24,6 @@ class Fruit : NSObject {
         self.price = price
         self.category = category
     }
+    
+  
 }
