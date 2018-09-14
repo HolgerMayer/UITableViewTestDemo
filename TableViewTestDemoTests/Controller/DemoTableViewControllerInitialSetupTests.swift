@@ -120,4 +120,11 @@ class DemoTableViewControllerInitialSetupTests: XCTestCase {
         self.testObject.tableView(mockTableView, moveRowAt: IndexPath(row: 0, section: 1), to: IndexPath(row: 1, section: 1))
  
     }
+    
+    func testEditableFruitTableViewCellRequestUniqueNames_NoDataSource(){
+        self.testObject.dataSource = nil
+        let result = self.testObject.editableFruitTableViewCellRequestUniqueNames(for: 0)
+        XCTAssertTrue(result.count == 0)
+    }
+    
 }

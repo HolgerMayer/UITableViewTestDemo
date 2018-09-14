@@ -335,4 +335,35 @@ class DemoTableViewControllerTableViewDataSourceTests: XCTestCase {
         XCTAssertTrue(indexPath.row == 6,"Row should be 6 is \(indexPath.row)" )
 
     }
+    
+    func testEditableFruitTableViewCellRequestUniqueNames(){
+        let mockAdapter = ObjectAdapterMock()
+        mockAdapter.valueForUniqueNames = ["Demo Example"]
+        self.testObject.dataSource = mockAdapter
+        
+        let result = self.testObject.editableFruitTableViewCellRequestUniqueNames(for: 0)
+        XCTAssertTrue(result.count == 1)
+        XCTAssertTrue(result[0] == "Demo Example")
+        XCTAssertTrue(mockAdapter.didCall_UniqueNames)
+    }
+    
+    func testEditableFruitTableViewCellBeginEditing(){
+        let mockAdapter = ObjectAdapterMock()
+        mockAdapter.valueForCellID = "EditableFruitTableViewCellID"
+        mockAdapter.valueForUniqueNames = ["Demo Example"]
+        self.testObject.dataSource = mockAdapter
+        let cell = self.testObject.tableView(self.testObject.tableView, cellForRowAt: IndexPath(row: 1, section: 1)) as! EditableFruitTableViewCell
+        
+        self.testObject.editableFruitTableViewCellBeginEditing(cell)
+     }
+    
+    func testEditableFruitTableViewCellValueDidChange(){
+        let mockAdapter = ObjectAdapterMock()
+        mockAdapter.valueForCellID = "EditableFruitTableViewCellID"
+        mockAdapter.valueForUniqueNames = ["Demo Example"]
+        self.testObject.dataSource = mockAdapter
+        let cell = self.testObject.tableView(self.testObject.tableView, cellForRowAt: IndexPath(row: 1, section: 1)) as! EditableFruitTableViewCell
+
+        self.testObject.editableFruitTableViewCellValueDidChange(cell, value: "Demo")
+    }
 }
